@@ -1,0 +1,6 @@
+framework module Pods_HomeAlertSystem {
+  umbrella header "Pods-HomeAlertSystem-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -13,6 +13,9 @@
 		505FDC74217ED4CA00E276DB /* HomeAlertSystem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 505FDC72217ED4CA00E276DB /* HomeAlertSystem.xcdatamodeld */; };
 		505FDC76217ED4DF00E276DB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 505FDC75217ED4DF00E276DB /* Launch Screen.storyboard */; };
 		505FDC78217EEFFE00E276DB /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505FDC77217EEFFE00E276DB /* BaseTabBarController.swift */; };
+		505FDC7A21802CD900E276DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 505FDC7921802CD900E276DB /* GoogleService-Info.plist */; };
+		505FDC7C21802D2400E276DB /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505FDC7B21802D2400E276DB /* SignInViewController.swift */; };
+		505FDC7E21802D4700E276DB /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505FDC7D21802D4700E276DB /* SignUpViewController.swift */; };
 		50686EA22170837300E97676 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50686EA12170837300E97676 /* AppDelegate.swift */; };
 		50686EA92170837300E97676 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50686EA72170837300E97676 /* Main.storyboard */; };
 		50686EAB2170837400E97676 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50686EAA2170837400E97676 /* Assets.xcassets */; };
@@ -47,6 +50,9 @@
 		505FDC73217ED4CA00E276DB /* HomeAlertSystem.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HomeAlertSystem.xcdatamodel; sourceTree = "<group>"; };
 		505FDC75217ED4DF00E276DB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		505FDC77217EEFFE00E276DB /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		505FDC7921802CD900E276DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		505FDC7B21802D2400E276DB /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		505FDC7D21802D4700E276DB /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		50686E9E2170837300E97676 /* HomeAlertSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeAlertSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50686EA12170837300E97676 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50686EA82170837300E97676 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -121,6 +127,7 @@
 		50686EA02170837300E97676 /* HomeAlertSystem */ = {
 			isa = PBXGroup;
 			children = (
+				505FDC7921802CD900E276DB /* GoogleService-Info.plist */,
 				50686EA12170837300E97676 /* AppDelegate.swift */,
 				50686EA72170837300E97676 /* Main.storyboard */,
 				50686EAA2170837400E97676 /* Assets.xcassets */,
@@ -129,6 +136,8 @@
 				505FDC72217ED4CA00E276DB /* HomeAlertSystem.xcdatamodeld */,
 				505FDC75217ED4DF00E276DB /* Launch Screen.storyboard */,
 				505FDC77217EEFFE00E276DB /* BaseTabBarController.swift */,
+				505FDC7B21802D2400E276DB /* SignInViewController.swift */,
+				505FDC7D21802D4700E276DB /* SignUpViewController.swift */,
 			);
 			path = HomeAlertSystem;
 			sourceTree = "<group>";
@@ -284,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				505FDC76217ED4DF00E276DB /* Launch Screen.storyboard in Resources */,
+				505FDC7A21802CD900E276DB /* GoogleService-Info.plist in Resources */,
 				50686EAB2170837400E97676 /* Assets.xcassets in Resources */,
 				50686EA92170837300E97676 /* Main.storyboard in Resources */,
 			);
@@ -407,9 +417,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				505FDC7E21802D4700E276DB /* SignUpViewController.swift in Sources */,
 				505FDC78217EEFFE00E276DB /* BaseTabBarController.swift in Sources */,
 				50686EA22170837300E97676 /* AppDelegate.swift in Sources */,
 				505FDC6E217ECFEF00E276DB /* MainViewController.swift in Sources */,
+				505FDC7C21802D2400E276DB /* SignInViewController.swift in Sources */,
 				505FDC74217ED4CA00E276DB /* HomeAlertSystem.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import AVFoundation
 
 @UIApplicationMain
@@ -17,6 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        FirebaseApp.configure()
+        
+        if((Auth.auth().currentUser) != nil){
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let homePage = mainStoryboard.instantiateViewController(withIdentifier: "BaseTabBarController") as! UITabBarController
+            self.window?.rootViewController = homePage
+        }
+        
         return true
     }
 
