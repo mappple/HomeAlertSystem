@@ -54,7 +54,7 @@ class MainViewController: UIViewController {
         videoView.layer.addSublayer(playerLayer)
         
         self.view.addSubview(videoView)
-        player.play()
+        //player.play()
         
         player.addObserver(self, forKeyPath: "currentItem.loadedTimeRanges", options: .new, context: nil)
         
