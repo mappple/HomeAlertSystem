@@ -41,7 +41,9 @@ class MainViewController: UIViewController {
         
 
         
-        let videoURL = URL(string: "http://172.20.10.9:8080/camera/livestream.m3u8")
+        
+        //let videoURL = URL(string: "http://172.20.10.9:8080/camera/livestream.m3u8")
+        let videoURL = URL(string: "http://192.168.2.145:8080/camera/livestream.m3u8")
         let player = AVPlayer(url: videoURL!)
         let playerLayer = AVPlayerLayer(player: player)
         let height = self.view.frame.width * 9 / 16
@@ -54,7 +56,7 @@ class MainViewController: UIViewController {
         videoView.layer.addSublayer(playerLayer)
         
         self.view.addSubview(videoView)
-        //player.play()
+        player.play()
         
         player.addObserver(self, forKeyPath: "currentItem.loadedTimeRanges", options: .new, context: nil)
         

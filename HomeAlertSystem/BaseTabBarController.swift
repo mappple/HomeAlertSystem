@@ -9,7 +9,8 @@
 import UIKit
 
 class BaseTabBarController: UITabBarController {
-
+    var nameLabelData: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

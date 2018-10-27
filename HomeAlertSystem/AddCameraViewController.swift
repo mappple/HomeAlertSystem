@@ -17,10 +17,17 @@ class AddCameraViewController: UIViewController, UIImagePickerControllerDelegate
     
     var appDelegate: AppDelegate?
     var managedObjectContext: NSManagedObjectContext?
-    
+    //var tabBar : BaseTabBarController?
     var imagePicker: UIImagePickerController!
+    var name: String?
+    var numOfUser: Int?
+    var gallerySize: Int?
     
     @IBAction func takePhoto(_ sender: Any) {
+        guard numOfUser != nil else {
+            displayMessage("Please input a name before take photo", "Error")
+            return
+        }
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
             imagePicker.sourceType = UIImagePickerController.SourceType.camera
         }
@@ -37,18 +44,18 @@ class AddCameraViewController: UIViewController, UIImagePickerControllerDelegate
             return
         }
         
-        let date = UInt(Date().timeIntervalSince1970)
+        //let date = UInt(Date().timeIntervalSince1970)
         var data = Data()
         data = image.jpegData(compressionQuality: 0.8)!
         
         let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         let url = NSURL(fileURLWithPath: path)
-        if let pathComponent = url.appendingPathComponent("\(date)") {
+        if let pathComponent = url.appendingPathComponent("User.\(numOfUser! + 1).\(gallerySize! + 1)") {
             let filePath = pathComponent.path
             let fileManager = FileManager.default
             fileManager.createFile(atPath: filePath, contents: data, attributes: nil)
             let newImage = NSEntityDescription.insertNewObject(forEntityName: "ImageMetaData", into: managedObjectContext!) as! ImageMetaData
-            newImage.fileName = "\(date)"
+            newImage.fileName = "User.\(numOfUser! + 1).\(gallerySize! + 1)"
             do {
                 try self.managedObjectContext?.save()
                 displayMessage("Image has been saved!", "Success")
@@ -66,6 +73,10 @@ class AddCameraViewController: UIViewController, UIImagePickerControllerDelegate
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
