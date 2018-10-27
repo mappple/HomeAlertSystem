@@ -16,8 +16,8 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
     @IBOutlet weak var currentACLabel: UILabel!
     
   
+    @IBOutlet weak var nameTextField: UITextField!
     
-    @IBOutlet weak var NameTextField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     
     
@@ -36,8 +36,19 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
     
     
     @IBAction func uploadButton(_ sender: Any) {
+        let acNameList = currentACLabel.text?.trimmingCharacters(in: .whitespaces)
+        guard let acName = nameTextField.text?.trimmingCharacters(in: .whitespaces), acName != "" else{
+            displayMessage("Please input a name!", "Error")
+            return
+        }
+            
+        guard acNameList!.range(of: acName) == nil else {
+            displayMessage("The name is already in the databse!", "Error")
+            return
+        }
+            
         guard imageList.count > 1 else {
-            displayMessage("Pleaase take at least six photo to ensure accuracy!", "Alert")
+            displayMessage("Pleaase take at least six photo to ensure accuracy!", "Error")
             return
         }
         for (index, name) in imagePathList.enumerated() {
@@ -50,6 +61,9 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
             
             uploadTask.observe(.success) { (snapshot) in
                 print("upload \(name) success ")
+                if index == self.imageList.count - 1 {
+                    self.displayMessage("Upload photo successfully!", "Congratulation")
+                }
             }
             
             uploadTask.observe(.failure) { (snapshot) in

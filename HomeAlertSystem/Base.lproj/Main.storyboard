@@ -353,9 +353,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="NameTextField" destination="xtb-3b-F4C" id="FTo-wB-bDG"/>
                         <outlet property="collectionView" destination="F7W-uj-1B2" id="ZDA-sE-8AY"/>
                         <outlet property="currentACLabel" destination="qof-kH-IxV" id="9Ba-ql-XLl"/>
+                        <outlet property="nameTextField" destination="xtb-3b-F4C" id="Pyw-wp-Ujq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SXI-4z-Hl0" userLabel="First Responder" sceneMemberID="firstResponder"/>
