@@ -10,7 +10,7 @@ target 'HomeAlertSystem' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
-  pod 'RSKImageCropper'
+  pod 'FirebaseUI/Storage'
 
   target 'HomeAlertSystemTests' do
     inherit! :search_paths

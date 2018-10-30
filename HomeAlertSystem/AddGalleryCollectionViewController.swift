@@ -14,13 +14,9 @@ import FirebaseStorage
 
 class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var currentACLabel: UILabel!
-    
-  
     @IBOutlet weak var nameTextField: UITextField!
-    
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    
+
     private let reuseIdentifier = "imageCell"
     private let sectionInsets = UIEdgeInsets(top: 50, left: 20, bottom: 50, right: 20)
     private let itemsPerRow: CGFloat = 3
@@ -67,9 +63,28 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
             let data = imageList[index].jpegData(compressionQuality: 0)
             
             let acStorageRef = storageRef.child("ac/\(name).jpg" )
-            let metadata = StorageMetadata()
-            metadata.contentType = "image/jepg"
-            let uploadTask = acStorageRef.putData(data!, metadata: metadata)
+            //let metadata = StorageMetadata()
+           // metadata.contentType = "image/jepg"
+            let uploadTask = acStorageRef.putData(data!, metadata: nil) { metadata, error in
+                guard let metadata = metadata else {
+                    print("error")
+                    return
+                }
+                metadata.contentType = "image/jepg"
+                acStorageRef.downloadURL { (url, error) in
+                    guard let downloadURL = url else {
+                        print("Error when getting downlaod url!")
+                        return
+                    }
+                        print(downloadURL)
+                        let ACNum = self.numOfUser!
+                        let stringOfUrl = downloadURL.absoluteString
+                        let addPhotoUrl = ["/pi01/acquaintance/\(ACNum)/\(index)": stringOfUrl]
+                        self.ref.updateChildValues(addPhotoUrl)
+
+                }
+            }
+            
             
             uploadTask.observe(.success) { (snapshot) in
                 print("upload \(name) success ")
@@ -102,7 +117,8 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
             let newACNameList = "\(currentAC!), \(newACName!)"
             let newACNum = numOfUser! + 1
             let updateACNameList = ["/pi01/acquaintance/list/name": newACNameList,
-                                    "/pi01/acquaintance/list/number": newACNum] as [String : Any]
+                                    "/pi01/acquaintance/list/number": newACNum,
+                                    "/pi01/acquaintance/\(newACNum)/name": newACName!] as [String : Any]
 
             ref.updateChildValues(updateACNameList)
         }

@@ -47,7 +47,7 @@ class MainViewController: UIViewController {
         let player = AVPlayer(url: videoURL!)
         let playerLayer = AVPlayerLayer(player: player)
         let height = self.view.frame.width * 9 / 16
-        let playerFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: height)
+        let playerFrame = CGRect(x: 0, y: 64, width: self.view.frame.width, height: height)
         playerLayer.frame = playerFrame
         
         let videoView = UIView(frame: playerFrame)
