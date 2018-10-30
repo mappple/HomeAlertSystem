@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A210AFF280FBA82137DF11B /* Pods_HomeAlertSystemTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD3F316E5FD6FC3C794DA91 /* Pods_HomeAlertSystemTests.framework */; };
+		13149731322E49F55A038FD3 /* Pods_HomeAlertSystemTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9826656EE0FABCE85C3FCCA2 /* Pods_HomeAlertSystemTests.framework */; };
 		504A57DC21888A220055C18E /* VisitHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504A57DB21888A1B0055C18E /* VisitHistoryTableViewController.swift */; };
 		504A57DE21888A2C0055C18E /* Visit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504A57DD21888A2C0055C18E /* Visit.swift */; };
 		504A57E021888B680055C18E /* TableElementParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504A57DF21888B680055C18E /* TableElementParam.swift */; };
@@ -29,8 +29,8 @@
 		50686EAB2170837400E97676 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50686EAA2170837400E97676 /* Assets.xcassets */; };
 		50686EB92170837500E97676 /* HomeAlertSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50686EB82170837500E97676 /* HomeAlertSystemTests.swift */; };
 		50686EC42170837500E97676 /* HomeAlertSystemUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50686EC32170837500E97676 /* HomeAlertSystemUITests.swift */; };
-		9D195AE000BA44629A3F6DEB /* Pods_HomeAlertSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F3FFC051B2B962C465B564 /* Pods_HomeAlertSystem.framework */; };
-		BB5FE2335755CF8CF060F15E /* Pods_HomeAlertSystemUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A633C420DBFEFA38C54EC983 /* Pods_HomeAlertSystemUITests.framework */; };
+		C9EB6BF76C53FABA5EFBD966 /* Pods_HomeAlertSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 310D6116C0B2339CCBAF4418 /* Pods_HomeAlertSystem.framework */; };
+		CD58DF6FF2518E1F5E85D1F3 /* Pods_HomeAlertSystemUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045D054B6231EDED626E1FBD /* Pods_HomeAlertSystemUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,10 +51,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0570682A69474920B2F385E7 /* Pods-HomeAlertSystemTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeAlertSystemTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomeAlertSystemTests/Pods-HomeAlertSystemTests.debug.xcconfig"; sourceTree = "<group>"; };
-		2118BA79F03542A7E2661A19 /* Pods-HomeAlertSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeAlertSystem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomeAlertSystem/Pods-HomeAlertSystem.debug.xcconfig"; sourceTree = "<group>"; };
-		21B613E784909EC30B98DEFA /* Pods-HomeAlertSystemUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeAlertSystemUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomeAlertSystemUITests/Pods-HomeAlertSystemUITests.release.xcconfig"; sourceTree = "<group>"; };
-		3A8850570BA9E218F9E3E8BE /* Pods-HomeAlertSystem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeAlertSystem.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomeAlertSystem/Pods-HomeAlertSystem.release.xcconfig"; sourceTree = "<group>"; };
+		02DA3503A9D68838104FDEF0 /* Pods-HomeAlertSystem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeAlertSystem.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomeAlertSystem/Pods-HomeAlertSystem.release.xcconfig"; sourceTree = "<group>"; };
+		045D054B6231EDED626E1FBD /* Pods_HomeAlertSystemUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeAlertSystemUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F0084DF9E6D59B003A6A98B /* Pods-HomeAlertSystemTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeAlertSystemTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomeAlertSystemTests/Pods-HomeAlertSystemTests.release.xcconfig"; sourceTree = "<group>"; };
+		24AB9A6D07169074609186AC /* Pods-HomeAlertSystemUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeAlertSystemUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomeAlertSystemUITests/Pods-HomeAlertSystemUITests.release.xcconfig"; sourceTree = "<group>"; };
+		310D6116C0B2339CCBAF4418 /* Pods_HomeAlertSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeAlertSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		504A57DB21888A1B0055C18E /* VisitHistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitHistoryTableViewController.swift; sourceTree = "<group>"; };
 		504A57DD21888A2C0055C18E /* Visit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Visit.swift; sourceTree = "<group>"; };
 		504A57DF21888B680055C18E /* TableElementParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableElementParam.swift; sourceTree = "<group>"; };
@@ -82,11 +83,10 @@
 		50686EBF2170837500E97676 /* HomeAlertSystemUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeAlertSystemUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50686EC32170837500E97676 /* HomeAlertSystemUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAlertSystemUITests.swift; sourceTree = "<group>"; };
 		50686EC52170837500E97676 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		686E2B2AD0A3AADDAA83150F /* Pods-HomeAlertSystemTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeAlertSystemTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomeAlertSystemTests/Pods-HomeAlertSystemTests.release.xcconfig"; sourceTree = "<group>"; };
-		A2F3FFC051B2B962C465B564 /* Pods_HomeAlertSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeAlertSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A633C420DBFEFA38C54EC983 /* Pods_HomeAlertSystemUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeAlertSystemUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6F26C3648EDFA2D537C5C1B /* Pods-HomeAlertSystemUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeAlertSystemUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomeAlertSystemUITests/Pods-HomeAlertSystemUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		CFD3F316E5FD6FC3C794DA91 /* Pods_HomeAlertSystemTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeAlertSystemTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9826656EE0FABCE85C3FCCA2 /* Pods_HomeAlertSystemTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeAlertSystemTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9922E92801BDB1F13F57B3EB /* Pods-HomeAlertSystemTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeAlertSystemTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomeAlertSystemTests/Pods-HomeAlertSystemTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CE60404CF9CF2BE45F37158F /* Pods-HomeAlertSystemUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeAlertSystemUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomeAlertSystemUITests/Pods-HomeAlertSystemUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E4ABEF5DEA87EA1F1F1F51EF /* Pods-HomeAlertSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeAlertSystem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomeAlertSystem/Pods-HomeAlertSystem.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +95,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				505FDC71217ED49400E276DB /* CoreData.framework in Frameworks */,
-				9D195AE000BA44629A3F6DEB /* Pods_HomeAlertSystem.framework in Frameworks */,
+				C9EB6BF76C53FABA5EFBD966 /* Pods_HomeAlertSystem.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A210AFF280FBA82137DF11B /* Pods_HomeAlertSystemTests.framework in Frameworks */,
+				13149731322E49F55A038FD3 /* Pods_HomeAlertSystemTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB5FE2335755CF8CF060F15E /* Pods_HomeAlertSystemUITests.framework in Frameworks */,
+				CD58DF6FF2518E1F5E85D1F3 /* Pods_HomeAlertSystemUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +126,7 @@
 				50686EC22170837500E97676 /* HomeAlertSystemUITests */,
 				50686E9F2170837300E97676 /* Products */,
 				E1F5C28AE53505911F9D0B12 /* Frameworks */,
-				B38BC527469C3419B745E5B7 /* Pods */,
+				6263E09833C30E91B118BBF7 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -184,15 +184,15 @@
 			path = HomeAlertSystemUITests;
 			sourceTree = "<group>";
 		};
-		B38BC527469C3419B745E5B7 /* Pods */ = {
+		6263E09833C30E91B118BBF7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2118BA79F03542A7E2661A19 /* Pods-HomeAlertSystem.debug.xcconfig */,
-				3A8850570BA9E218F9E3E8BE /* Pods-HomeAlertSystem.release.xcconfig */,
-				0570682A69474920B2F385E7 /* Pods-HomeAlertSystemTests.debug.xcconfig */,
-				686E2B2AD0A3AADDAA83150F /* Pods-HomeAlertSystemTests.release.xcconfig */,
-				C6F26C3648EDFA2D537C5C1B /* Pods-HomeAlertSystemUITests.debug.xcconfig */,
-				21B613E784909EC30B98DEFA /* Pods-HomeAlertSystemUITests.release.xcconfig */,
+				E4ABEF5DEA87EA1F1F1F51EF /* Pods-HomeAlertSystem.debug.xcconfig */,
+				02DA3503A9D68838104FDEF0 /* Pods-HomeAlertSystem.release.xcconfig */,
+				9922E92801BDB1F13F57B3EB /* Pods-HomeAlertSystemTests.debug.xcconfig */,
+				1F0084DF9E6D59B003A6A98B /* Pods-HomeAlertSystemTests.release.xcconfig */,
+				CE60404CF9CF2BE45F37158F /* Pods-HomeAlertSystemUITests.debug.xcconfig */,
+				24AB9A6D07169074609186AC /* Pods-HomeAlertSystemUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -201,9 +201,9 @@
 			isa = PBXGroup;
 			children = (
 				505FDC70217ED49400E276DB /* CoreData.framework */,
-				A2F3FFC051B2B962C465B564 /* Pods_HomeAlertSystem.framework */,
-				CFD3F316E5FD6FC3C794DA91 /* Pods_HomeAlertSystemTests.framework */,
-				A633C420DBFEFA38C54EC983 /* Pods_HomeAlertSystemUITests.framework */,
+				310D6116C0B2339CCBAF4418 /* Pods_HomeAlertSystem.framework */,
+				9826656EE0FABCE85C3FCCA2 /* Pods_HomeAlertSystemTests.framework */,
+				045D054B6231EDED626E1FBD /* Pods_HomeAlertSystemUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -215,11 +215,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50686EC82170837500E97676 /* Build configuration list for PBXNativeTarget "HomeAlertSystem" */;
 			buildPhases = (
-				EC5E7D7F32BE4BE3DF5F2C17 /* [CP] Check Pods Manifest.lock */,
+				EE02E21CF150C9BF5C62E694 /* [CP] Check Pods Manifest.lock */,
 				50686E9A2170837300E97676 /* Sources */,
 				50686E9B2170837300E97676 /* Frameworks */,
 				50686E9C2170837300E97676 /* Resources */,
-				3CC71179A8FB653FF7EECBFD /* [CP] Embed Pods Frameworks */,
+				59D14F786C2D72D7D36A4057 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -234,7 +234,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50686ECB2170837500E97676 /* Build configuration list for PBXNativeTarget "HomeAlertSystemTests" */;
 			buildPhases = (
-				364A98EB5BB3B3580C9AF522 /* [CP] Check Pods Manifest.lock */,
+				568D2A6525C1352C584BF6BA /* [CP] Check Pods Manifest.lock */,
 				50686EB02170837500E97676 /* Sources */,
 				50686EB12170837500E97676 /* Frameworks */,
 				50686EB22170837500E97676 /* Resources */,
@@ -253,7 +253,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50686ECE2170837500E97676 /* Build configuration list for PBXNativeTarget "HomeAlertSystemUITests" */;
 			buildPhases = (
-				B1AC9DB537444BF1A5B275D8 /* [CP] Check Pods Manifest.lock */,
+				BDFA69A88C142750F50EE411 /* [CP] Check Pods Manifest.lock */,
 				50686EBB2170837500E97676 /* Sources */,
 				50686EBC2170837500E97676 /* Frameworks */,
 				50686EBD2170837500E97676 /* Resources */,
@@ -340,7 +340,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		364A98EB5BB3B3580C9AF522 /* [CP] Check Pods Manifest.lock */ = {
+		568D2A6525C1352C584BF6BA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -362,7 +362,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3CC71179A8FB653FF7EECBFD /* [CP] Embed Pods Frameworks */ = {
+		59D14F786C2D72D7D36A4057 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -392,7 +392,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HomeAlertSystem/Pods-HomeAlertSystem-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B1AC9DB537444BF1A5B275D8 /* [CP] Check Pods Manifest.lock */ = {
+		BDFA69A88C142750F50EE411 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -414,7 +414,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EC5E7D7F32BE4BE3DF5F2C17 /* [CP] Check Pods Manifest.lock */ = {
+		EE02E21CF150C9BF5C62E694 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -621,7 +621,7 @@
 		};
 		50686EC92170837500E97676 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2118BA79F03542A7E2661A19 /* Pods-HomeAlertSystem.debug.xcconfig */;
+			baseConfigurationReference = E4ABEF5DEA87EA1F1F1F51EF /* Pods-HomeAlertSystem.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -641,7 +641,7 @@
 		};
 		50686ECA2170837500E97676 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3A8850570BA9E218F9E3E8BE /* Pods-HomeAlertSystem.release.xcconfig */;
+			baseConfigurationReference = 02DA3503A9D68838104FDEF0 /* Pods-HomeAlertSystem.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -661,7 +661,7 @@
 		};
 		50686ECC2170837500E97676 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0570682A69474920B2F385E7 /* Pods-HomeAlertSystemTests.debug.xcconfig */;
+			baseConfigurationReference = 9922E92801BDB1F13F57B3EB /* Pods-HomeAlertSystemTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -683,7 +683,7 @@
 		};
 		50686ECD2170837500E97676 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 686E2B2AD0A3AADDAA83150F /* Pods-HomeAlertSystemTests.release.xcconfig */;
+			baseConfigurationReference = 1F0084DF9E6D59B003A6A98B /* Pods-HomeAlertSystemTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -705,7 +705,7 @@
 		};
 		50686ECF2170837500E97676 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C6F26C3648EDFA2D537C5C1B /* Pods-HomeAlertSystemUITests.debug.xcconfig */;
+			baseConfigurationReference = CE60404CF9CF2BE45F37158F /* Pods-HomeAlertSystemUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -726,7 +726,7 @@
 		};
 		50686ED02170837500E97676 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21B613E784909EC30B98DEFA /* Pods-HomeAlertSystemUITests.release.xcconfig */;
+			baseConfigurationReference = 24AB9A6D07169074609186AC /* Pods-HomeAlertSystemUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
