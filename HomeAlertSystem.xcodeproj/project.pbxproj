@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		26C7D2096BC9956FB6949C00 /* Pods_HomeAlertSystemTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4CC0BC97466C69EA01404A9 /* Pods_HomeAlertSystemTests.framework */; };
 		2BF3C582EF4BC7179429BF1F /* Pods_HomeAlertSystemUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE8A99AE4F3DE6721F86731 /* Pods_HomeAlertSystemUITests.framework */; };
+		3A4F7688218813CE0053D074 /* VisitHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F7687218813CE0053D074 /* VisitHistoryTableViewController.swift */; };
+		3A4F768A2188225B0053D074 /* Visit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F76892188225B0053D074 /* Visit.swift */; };
+		3A4F768C2188684C0053D074 /* TableElementParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F768B2188684C0053D074 /* TableElementParam.swift */; };
 		505FDC6E217ECFEF00E276DB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505FDC6D217ECFEF00E276DB /* MainViewController.swift */; };
 		505FDC71217ED49400E276DB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505FDC70217ED49400E276DB /* CoreData.framework */; };
 		505FDC74217ED4CA00E276DB /* HomeAlertSystem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 505FDC72217ED4CA00E276DB /* HomeAlertSystem.xcdatamodeld */; };
@@ -49,6 +52,9 @@
 
 /* Begin PBXFileReference section */
 		32453760BB28550929EDCED3 /* Pods-HomeAlertSystemUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeAlertSystemUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomeAlertSystemUITests/Pods-HomeAlertSystemUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3A4F7687218813CE0053D074 /* VisitHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitHistoryTableViewController.swift; sourceTree = "<group>"; };
+		3A4F76892188225B0053D074 /* Visit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visit.swift; sourceTree = "<group>"; };
+		3A4F768B2188684C0053D074 /* TableElementParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableElementParam.swift; sourceTree = "<group>"; };
 		505FDC6D217ECFEF00E276DB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		505FDC70217ED49400E276DB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		505FDC73217ED4CA00E276DB /* HomeAlertSystem.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HomeAlertSystem.xcdatamodel; sourceTree = "<group>"; };
@@ -155,6 +161,9 @@
 				505FDC7921802CD900E276DB /* GoogleService-Info.plist */,
 				50686EA12170837300E97676 /* AppDelegate.swift */,
 				50686EA72170837300E97676 /* Main.storyboard */,
+				3A4F7687218813CE0053D074 /* VisitHistoryTableViewController.swift */,
+				3A4F768B2188684C0053D074 /* TableElementParam.swift */,
+				3A4F76892188225B0053D074 /* Visit.swift */,
 				50686EAA2170837400E97676 /* Assets.xcassets */,
 				50686EAF2170837500E97676 /* Info.plist */,
 				505FDC6D217ECFEF00E276DB /* MainViewController.swift */,
@@ -435,9 +444,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				505FDC7E21802D4700E276DB /* SignUpViewController.swift in Sources */,
+				3A4F768A2188225B0053D074 /* Visit.swift in Sources */,
 				505FDC8E21831E5100E276DB /* ImageCollectionViewCell.swift in Sources */,
+				3A4F768C2188684C0053D074 /* TableElementParam.swift in Sources */,
 				505FDC78217EEFFE00E276DB /* BaseTabBarController.swift in Sources */,
 				50686EA22170837300E97676 /* AppDelegate.swift in Sources */,
+				3A4F7688218813CE0053D074 /* VisitHistoryTableViewController.swift in Sources */,
 				505FDC6E217ECFEF00E276DB /* MainViewController.swift in Sources */,
 				505FDC8C218319F900E276DB /* ImageMetaData+CoreDataProperties.swift in Sources */,
 				505FDC7C21802D2400E276DB /* SignInViewController.swift in Sources */,

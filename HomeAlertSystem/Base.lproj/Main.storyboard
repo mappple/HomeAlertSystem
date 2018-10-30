@@ -56,22 +56,6 @@
             </objects>
             <point key="canvasLocation" x="-327.19999999999999" y="-657.12143928035982"/>
         </scene>
-        <!--List-->
-        <scene sceneID="m7b-Du-XxJ">
-            <objects>
-                <viewController id="iwG-9k-1bR" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="4mO-Tp-Y3C">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="wvC-nj-6Eq"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="List" image="details" id="CDJ-EH-0qo"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VSL-Ve-wlD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2114" y="-1323"/>
-        </scene>
         <!--Base Tab Bar Controller-->
         <scene sceneID="Q7a-TM-b1s">
             <objects>
@@ -83,8 +67,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="SZx-qN-CuP" kind="relationship" relationship="viewControllers" id="OZZ-u9-xxW"/>
-                        <segue destination="iwG-9k-1bR" kind="relationship" relationship="viewControllers" id="GKg-CL-pq2"/>
                         <segue destination="uME-vZ-Ced" kind="relationship" relationship="viewControllers" id="hKY-KM-GEQ"/>
+                        <segue destination="2ra-gs-X7S" kind="relationship" relationship="viewControllers" id="S7A-FU-1Ku"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eV7-Aj-ogm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -234,6 +218,73 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lhb-RT-gtX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-4202" y="-1032"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="2sA-Ul-pqy">
+            <objects>
+                <tableViewController id="2ra-gs-X7S" customClass="VisitHistoryTableViewController" customModule="HomeAlertSystem" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OPx-3a-Uiw" customClass="V">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitCell" rowHeight="213" id="hld-Az-9QP" customClass="VisitTableViewCell" customModule="HomeAlertSystem" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="213"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hld-Az-9QP" id="XRh-8N-d8y">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="212.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAH-zm-YXc">
+                                            <rect key="frame" x="27" y="11" width="316" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IwF-UI-mu1">
+                                            <rect key="frame" x="27" y="61" width="316" height="141"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6aM-V1-qfJ">
+                                            <rect key="frame" x="27" y="40" width="316" height="13"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="13" id="Owl-UF-H1g"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="IwF-UI-mu1" firstAttribute="top" secondItem="6aM-V1-qfJ" secondAttribute="bottom" constant="8" symbolic="YES" id="7v0-nf-H2v"/>
+                                        <constraint firstItem="IwF-UI-mu1" firstAttribute="bottom" secondItem="XRh-8N-d8y" secondAttribute="bottomMargin" id="Fpy-et-sdM"/>
+                                        <constraint firstItem="6aM-V1-qfJ" firstAttribute="trailing" secondItem="iAH-zm-YXc" secondAttribute="trailing" id="Mqd-oZ-I4K"/>
+                                        <constraint firstItem="6aM-V1-qfJ" firstAttribute="leading" secondItem="iAH-zm-YXc" secondAttribute="leading" id="QIX-0b-tc4"/>
+                                        <constraint firstItem="IwF-UI-mu1" firstAttribute="leading" secondItem="6aM-V1-qfJ" secondAttribute="leading" id="Wm7-v0-rMb"/>
+                                        <constraint firstItem="IwF-UI-mu1" firstAttribute="trailing" secondItem="6aM-V1-qfJ" secondAttribute="trailing" id="XEP-D3-G6B"/>
+                                        <constraint firstItem="iAH-zm-YXc" firstAttribute="top" secondItem="XRh-8N-d8y" secondAttribute="topMargin" id="eAy-Tq-zq3"/>
+                                        <constraint firstItem="6aM-V1-qfJ" firstAttribute="top" secondItem="iAH-zm-YXc" secondAttribute="bottom" constant="8" symbolic="YES" id="ewK-wM-wvZ"/>
+                                        <constraint firstItem="6aM-V1-qfJ" firstAttribute="top" secondItem="XRh-8N-d8y" secondAttribute="top" constant="40" id="fgl-71-edG"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="iAH-zm-YXc" secondAttribute="trailing" constant="16" id="isU-Wb-nWO"/>
+                                        <constraint firstItem="iAH-zm-YXc" firstAttribute="leading" secondItem="XRh-8N-d8y" secondAttribute="leadingMargin" constant="11" id="tkQ-uZ-HCU"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="visitDateLabel" destination="6aM-V1-qfJ" id="Lso-ej-UFU"/>
+                                    <outlet property="visitorImage" destination="IwF-UI-mu1" id="mAe-UA-Jwo"/>
+                                    <outlet property="visitorNameLabel" destination="iAH-zm-YXc" id="dxy-Hr-Y8u"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2ra-gs-X7S" id="Xgq-x8-P9q"/>
+                            <outlet property="delegate" destination="2ra-gs-X7S" id="Bi5-Ok-tUr"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" image="details" id="p8R-Ex-6vG"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m8u-hf-NbE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2114.4000000000001" y="-1367.7661169415294"/>
         </scene>
         <!--Add-->
         <scene sceneID="TB9-Ub-fQ1">
@@ -397,8 +448,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="details" width="45" height="45"/>
-        <image name="home" width="45" height="45"/>
-        <image name="plus" width="45" height="45"/>
+        <image name="details" width="30" height="30"/>
+        <image name="home" width="30" height="30"/>
+        <image name="plus" width="30" height="30"/>
     </resources>
 </document>
