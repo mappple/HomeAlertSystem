@@ -53,7 +53,6 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
             displayMessage("The name is already in the databse!", "Error")
             return
         }
-        
         guard imageList.count > 1 else {
             displayMessage("Pleaase take at least six photo to ensure accuracy!", "Error")
             return
@@ -61,16 +60,9 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
         for (index, name) in imagePathList.enumerated() {
             
             let data = imageList[index].jpegData(compressionQuality: 0)
-            
-            let acStorageRef = storageRef.child("ac/\(name).jpg" )
-            //let metadata = StorageMetadata()
-           // metadata.contentType = "image/jepg"
+            let acStorageRef = storageRef.child("pi01/ac/\(name).jpg" )
             let uploadTask = acStorageRef.putData(data!, metadata: nil) { metadata, error in
-                guard let metadata = metadata else {
-                    print("error")
-                    return
-                }
-                metadata.contentType = "image/jepg"
+                metadata!.contentType = "image/jepg"
                 acStorageRef.downloadURL { (url, error) in
                     guard let downloadURL = url else {
                         print("Error when getting downlaod url!")
@@ -79,20 +71,16 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
                         print(downloadURL)
                         let ACNum = self.numOfUser!
                         let stringOfUrl = downloadURL.absoluteString
-                        let addPhotoUrl = ["/pi01/acquaintance/\(ACNum)/\(index)": stringOfUrl]
+                        let addPhotoUrl = ["/pi01/acquaintance/\(ACNum)/\(index + 1)": stringOfUrl]
                         self.ref.updateChildValues(addPhotoUrl)
-
                 }
             }
-            
-            
             uploadTask.observe(.success) { (snapshot) in
                 print("upload \(name) success ")
                 if index == self.imageList.count - 1 {
                     self.displayMessage("Upload photo successfully!", "Congratulation")
                 }
             }
-            
             uploadTask.observe(.failure) { (snapshot) in
                 if let error = snapshot.error as NSError? {
                     switch (StorageErrorCode(rawValue: error.code)!) {
@@ -114,7 +102,7 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
                 }
             }
             
-            let newACNameList = "\(currentAC!), \(newACName!)"
+            let newACNameList = "\(currentAC!),\(newACName!)"
             let newACNum = numOfUser! + 1
             let updateACNameList = ["/pi01/acquaintance/list/name": newACNameList,
                                     "/pi01/acquaintance/list/number": newACNum,
@@ -122,6 +110,14 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
 
             ref.updateChildValues(updateACNameList)
         }
+        cleanCoreData()
+        imageList.removeAll()
+        imagePathList.removeAll()
+        collectionView?.reloadSections([0])
+        nameTextField.text = ""
+        submitButton.isEnabled = false
+        confirmButton.isEnabled = true
+        
     }
 
     override func viewDidLoad() {
@@ -152,10 +148,10 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
             let data = snapshot.value as? Dictionary<String, Any>
             self.currentAC = data!["name"] as! String?
             let number = data!["number"] as! Int?
-            let start = self.currentAC!.index((self.currentAC?.startIndex)!, offsetBy: 5)
-            let range = start..<(self.currentAC?.endIndex)!
-            let displayCurrentAC = self.currentAC![range]
-            self.currentACLabel.text = "Current acquaintance: \(displayCurrentAC)"
+            //let start = self.currentAC!.index((self.currentAC?.startIndex)!, offsetBy: 5)
+            //let range = start..<(self.currentAC?.endIndex)!
+            //let displayCurrentAC = self.currentAC![range]
+            self.currentACLabel.text = "Current acquaintance: \(self.currentAC!)"
             self.numOfUser = number
         })
         
@@ -195,6 +191,19 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
         }
         
         return image
+    }
+    
+    func cleanCoreData() {
+        // Create Fetch Request
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ImageMetaData")
+        // Create Batch Delete Request
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try managedObjectContext?.execute(batchDeleteRequest)
+        } catch {
+            print("Clean Coredata failed")
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
