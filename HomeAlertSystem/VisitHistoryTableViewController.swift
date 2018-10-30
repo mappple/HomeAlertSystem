@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseStorage
-import SDWebImage
+
 
 
 class VisitTableViewCell: UITableViewCell {
