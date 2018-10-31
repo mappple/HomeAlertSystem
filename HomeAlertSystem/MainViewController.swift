@@ -33,60 +33,60 @@ class MainViewController: UIViewController {
         
 
         
-        setupPlayer()
+  //      setupPlayer()
         
     }
     
-    func setupPlayer() {
+    //func setupPlayer() {
         
 
         
         
         //let videoURL = URL(string: "http://172.20.10.9:8080/camera/livestream.m3u8")
-        let videoURL = URL(string: "http://192.168.2.145:8080/camera/livestream.m3u8")
-        let player = AVPlayer(url: videoURL!)
-        let playerLayer = AVPlayerLayer(player: player)
-        let height = self.view.frame.width * 9 / 16
-        let playerFrame = CGRect(x: 0, y: 64, width: self.view.frame.width, height: height)
-        playerLayer.frame = playerFrame
-        
-        let videoView = UIView(frame: playerFrame)
-        
-        videoView.backgroundColor = UIColor.black
-        videoView.layer.addSublayer(playerLayer)
-        
-        self.view.addSubview(videoView)
-        player.play()
-        
-        player.addObserver(self, forKeyPath: "currentItem.loadedTimeRanges", options: .new, context: nil)
-        
-        let controlsContainerView: UIView = {
-            let view = UIView()
-            //view.backgroundColor = UIColor(white: 1, alpha: 0.5)
-            return view
-        }()
-        
-
-        aiv.translatesAutoresizingMaskIntoConstraints = false
-        aiv.startAnimating()
-        controlsContainerView.frame = playerFrame
-        self.view.addSubview(controlsContainerView)
-        
-        controlsContainerView.addSubview(aiv)
-        aiv.centerXAnchor.constraint(equalTo: controlsContainerView.centerXAnchor).isActive = true
-        aiv.centerYAnchor.constraint(equalTo: controlsContainerView.centerYAnchor).isActive = true
-        
+//        let videoURL = URL(string: "http://192.168.2.145:8080/camera/livestream.m3u8")
+//        let player = AVPlayer(url: videoURL!)
+//        let playerLayer = AVPlayerLayer(player: player)
+//        let height = self.view.frame.width * 9 / 16
+//        let playerFrame = CGRect(x: 0, y: 64, width: self.view.frame.width, height: height)
+//        playerLayer.frame = playerFrame
+//
+//        let videoView = UIView(frame: playerFrame)
+//
+//        videoView.backgroundColor = UIColor.black
+//        videoView.layer.addSublayer(playerLayer)
+//
+//        self.view.addSubview(videoView)
+//        player.play()
+//
+//        player.addObserver(self, forKeyPath: "currentItem.loadedTimeRanges", options: .new, context: nil)
+//
+//        let controlsContainerView: UIView = {
+//            let view = UIView()
+//            //view.backgroundColor = UIColor(white: 1, alpha: 0.5)
+//            return view
+//        }()
+//
+//
+//        aiv.translatesAutoresizingMaskIntoConstraints = false
+//        aiv.startAnimating()
+//        controlsContainerView.frame = playerFrame
+//        self.view.addSubview(controlsContainerView)
+//
+//        controlsContainerView.addSubview(aiv)
+//        aiv.centerXAnchor.constraint(equalTo: controlsContainerView.centerXAnchor).isActive = true
+//        aiv.centerYAnchor.constraint(equalTo: controlsContainerView.centerYAnchor).isActive = true
+//
         
         
     }
     
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "currentItem.loadedTimeRanges" {
-            aiv.stopAnimating()
-            
-        }
-    }
+//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+//        if keyPath == "currentItem.loadedTimeRanges" {
+//            aiv.stopAnimating()
+//
+//        }
+//    }
 
     /*
     // MARK: - Navigation
@@ -98,4 +98,4 @@ class MainViewController: UIViewController {
     }
     */
 
-}
+//}

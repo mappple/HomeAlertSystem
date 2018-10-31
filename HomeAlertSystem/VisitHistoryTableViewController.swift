@@ -46,12 +46,12 @@ class VisitHistoryTableViewController: UITableViewController {
                 let data = try? Data(contentsOf: url)
                 
                 
-                let imageDefault = UIImage(named: "blank")
-                let image = UIImage(data: data!)
+                //let imageDefault = UIImage(named: "blank")
+                //let image = UIImage(data: data!)
                 
                 
                 
-                self.visitList.append(Visit(id: id, time: time, sectionMark: sectionMark, url: url, image: image!))
+                self.visitList.append(Visit(id: id, time: time, sectionMark: sectionMark, url: url))
                 
                 self.visitList.sort() {$0.sectionMark > $1.sectionMark}
                 
@@ -100,6 +100,7 @@ class VisitHistoryTableViewController: UITableViewController {
         observeNewVisit()
         
     }
+    
 
     // MARK: - Table view data source
 
@@ -119,9 +120,8 @@ class VisitHistoryTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "VisitCell", for: indexPath)
-            as! VisitTableViewCell
-
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "VisitCell", for: indexPath) as! VisitTableViewCell
+        let cell = tableView.cellForRow(at: indexPath) as! VisitTableViewCell
         
         let visitor = visitList[indexPath.row]
         cell.visitorNameLabel?.text = visitor.id
@@ -131,7 +131,13 @@ class VisitHistoryTableViewController: UITableViewController {
         let dateString = df.string(from: visitor.time)
         cell.visitDateLabel?.text = dateString
         
-        cell.visitorImage.image = visitor.image
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: visitor.url)
+            DispatchQueue.main.async {
+                cell.visitorImage.image = UIImage(data: data!)
+            }
+        }
+
         
         let itemSize = CGSize.init(width: 320, height: 180)
         UIGraphicsBeginImageContextWithOptions(itemSize, false, UIScreen.main.scale);
@@ -195,3 +201,4 @@ class VisitHistoryTableViewController: UITableViewController {
     */
 
 }
+

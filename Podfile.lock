@@ -85,6 +85,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - FirebaseUI/Storage
+  - SDWebImage
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -121,6 +122,6 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
 
-PODFILE CHECKSUM: 5e55531a6fc5cd698a2649ddee120becba61af54
+PODFILE CHECKSUM: 7295fc11c411ab7d8c6b339cb09d203d3209317d
 
 COCOAPODS: 1.5.3

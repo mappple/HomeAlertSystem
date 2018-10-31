@@ -79,6 +79,17 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
                 print("upload \(name) success ")
                 if index == self.imageList.count - 1 {
                     self.displayMessage("Upload photo successfully!", "Congratulation")
+                    let ACNum = self.numOfUser!
+                    let setPhotoNum = ["/pi01/acquaintance/\(ACNum)/photoNum": self.imageList.count]
+                    self.ref.updateChildValues(setPhotoNum)
+                    self.cleanCoreData()
+                    self.imageList.removeAll()
+                    self.imagePathList.removeAll()
+                    self.collectionView?.reloadSections([0])
+                    self.nameTextField.text = ""
+                    self.submitButton.isEnabled = false
+                    self.confirmButton.isEnabled = true
+                    self.nameTextField.isEnabled = true
                 }
             }
             uploadTask.observe(.failure) { (snapshot) in
@@ -110,13 +121,7 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
 
             ref.updateChildValues(updateACNameList)
         }
-        cleanCoreData()
-        imageList.removeAll()
-        imagePathList.removeAll()
-        collectionView?.reloadSections([0])
-        nameTextField.text = ""
-        submitButton.isEnabled = false
-        confirmButton.isEnabled = true
+
         
     }
 

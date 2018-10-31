@@ -63,18 +63,20 @@ class AddCameraViewController: UIViewController, UIImagePickerControllerDelegate
             return
         }
         
-        //let date = UInt(Date().timeIntervalSince1970)
+        let date = UInt(Date().timeIntervalSince1970)
         var data = Data()
         data = image.jpegData(compressionQuality: 0.8)!
         
         let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         let url = NSURL(fileURLWithPath: path)
-        if let pathComponent = url.appendingPathComponent("User.\(numOfUser! + 1).\(gallerySize! + 1)") {
+        //if let pathComponent = url.appendingPathComponent("User.\(numOfUser! + 1).\(gallerySize! + 1)")
+        if let pathComponent = url.appendingPathComponent("\(date)") {
             let filePath = pathComponent.path
             let fileManager = FileManager.default
             fileManager.createFile(atPath: filePath, contents: data, attributes: nil)
             let newImage = NSEntityDescription.insertNewObject(forEntityName: "ImageMetaData", into: managedObjectContext!) as! ImageMetaData
-            newImage.fileName = "User.\(numOfUser! + 1).\(gallerySize! + 1)"
+            //newImage.fileName = "User.\(numOfUser! + 1).\(gallerySize! + 1)"
+            newImage.fileName = "\(date)"
             do {
                 try self.managedObjectContext?.save()
                 displayMessage("Image has been saved!", "Success")

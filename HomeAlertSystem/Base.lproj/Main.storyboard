@@ -17,9 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxA-16-taG">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxA-16-taG">
                                 <rect key="frame" x="16" y="538" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save Photo"/>
                                 <connections>
                                     <action selector="savePhoto:" destination="Fa0-si-OaI" eventType="touchUpInside" id="sQi-hr-MBu"/>
@@ -31,9 +30,8 @@
                                     <constraint firstAttribute="width" secondItem="yGz-5m-e4L" secondAttribute="height" multiplier="1:1" id="ajT-tB-JFc"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVR-64-v8t">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVR-64-v8t">
                                 <rect key="frame" x="16" y="475" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Take Photo"/>
                                 <connections>
                                     <action selector="takePhoto:" destination="Fa0-si-OaI" eventType="touchUpInside" id="s42-M1-dKD"/>
@@ -42,9 +40,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="tVR-64-v8t" firstAttribute="trailing" secondItem="uxA-16-taG" secondAttribute="trailing" id="05b-nV-1Fa"/>
                             <constraint firstItem="yGz-5m-e4L" firstAttribute="leading" secondItem="GhS-x6-fMa" secondAttribute="leading" constant="8" id="Mq1-NJ-VLY"/>
+                            <constraint firstItem="uxA-16-taG" firstAttribute="top" secondItem="tVR-64-v8t" secondAttribute="bottom" constant="33" id="aLf-Va-2Po"/>
+                            <constraint firstItem="tVR-64-v8t" firstAttribute="top" secondItem="yGz-5m-e4L" secondAttribute="bottom" constant="44" id="bs5-7a-WC9"/>
+                            <constraint firstItem="tVR-64-v8t" firstAttribute="leading" secondItem="4H1-iR-E3U" secondAttribute="leadingMargin" id="f4H-RD-Dum"/>
                             <constraint firstItem="GhS-x6-fMa" firstAttribute="trailing" secondItem="yGz-5m-e4L" secondAttribute="trailing" constant="8" id="pmG-nS-ypT"/>
+                            <constraint firstItem="tVR-64-v8t" firstAttribute="leading" secondItem="uxA-16-taG" secondAttribute="leading" id="ske-bl-axN"/>
                             <constraint firstItem="yGz-5m-e4L" firstAttribute="top" secondItem="GhS-x6-fMa" secondAttribute="top" constant="8" id="xgN-NA-4SV"/>
+                            <constraint firstItem="tVR-64-v8t" firstAttribute="centerX" secondItem="yGz-5m-e4L" secondAttribute="centerX" id="zYm-VX-sPZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GhS-x6-fMa"/>
                     </view>
@@ -223,13 +227,13 @@
         <scene sceneID="2sA-Ul-pqy">
             <objects>
                 <tableViewController id="2ra-gs-X7S" customClass="VisitHistoryTableViewController" customModule="HomeAlertSystem" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OPx-3a-Uiw" customClass="V">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="OPx-3a-Uiw" customClass="V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitCell" rowHeight="213" id="hld-Az-9QP" customClass="VisitTableViewCell" customModule="HomeAlertSystem" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="213"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="213"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hld-Az-9QP" id="XRh-8N-d8y">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="212.5"/>
@@ -448,8 +452,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="details" width="30" height="30"/>
-        <image name="home" width="30" height="30"/>
-        <image name="plus" width="30" height="30"/>
+        <image name="details" width="45" height="45"/>
+        <image name="home" width="45" height="45"/>
+        <image name="plus" width="45" height="45"/>
     </resources>
 </document>

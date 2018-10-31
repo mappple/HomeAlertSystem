@@ -11,6 +11,7 @@ target 'HomeAlertSystem' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'FirebaseUI/Storage'
+  pod 'SDWebImage'
 
   target 'HomeAlertSystemTests' do
     inherit! :search_paths

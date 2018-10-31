@@ -14,15 +14,15 @@ class Visit: NSObject {
     let time: Date
     let sectionMark: Int
     let url: URL
-    let image: UIImage
+    //let image: UIImage
     
     
-    init(id: String, time: Date, sectionMark: Int, url: URL, image: UIImage) {
+    init(id: String, time: Date, sectionMark: Int, url: URL) {
         self.id = id
         self.time = time
         self.sectionMark = sectionMark
         self.url = url
-        self.image = image
+        //self.image = image
         
     }
     
