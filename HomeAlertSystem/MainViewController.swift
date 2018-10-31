@@ -27,8 +27,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         appDelegate?.window??.rootViewController = signInPage
         }
     
- 
-
+    //var tabVC: BaseTabBarController?
+    private var ref = Database.database().reference()
     private let acquaintanceRef = Database.database().reference().child("pi01/acquaintance")
     private var acquaintanceRefHandle: DatabaseHandle?
     private var acquaintanceDictionary: [Int: String] = [:]
@@ -41,11 +41,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     {
         acquaintanceRefHandle = acquaintanceRef.observe(.childAdded, with: {(snapshot) -> Void in
             
-            if self.isStringAnInt(string: snapshot.key) == true && Int(snapshot.key) != 0{
+            if self.isStringAnInt(string: snapshot.key) == true {
                 let data = snapshot.value as! Dictionary<String, Any>
                 if let name = data["name"] as! String?, let index = snapshot.key as String?{
                     self.acquaintanceDictionary[Int(index)!] = name
                     self.acquaintanceTableView.reloadData()
+                    let tabVC = self.tabBarController as! BaseTabBarController
+                    tabVC.acDict = self.acquaintanceDictionary
                 } else {
                     print("Error for data reference observer")
                 }
@@ -88,10 +90,23 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return 1
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Current Acquaintance List"
+    }
     
+    //let aiv = UIActivityIndicatorView(style: .whiteLarge)
     
-    let aiv = UIActivityIndicatorView(style: .whiteLarge)
-    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            acquaintanceDictionary.removeValue(forKey: indexPath.row + 1)
+            let newACNum = acquaintanceDictionary.count
+            let updateACNameList = ["/pi01/acquaintance/list/number": newACNum]
+            ref.updateChildValues(updateACNameList)
+            acquaintanceRef.child(String(indexPath.row + 1)).removeValue()
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

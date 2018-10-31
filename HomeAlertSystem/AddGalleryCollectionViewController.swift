@@ -13,14 +13,13 @@ import FirebaseDatabase
 import FirebaseStorage
 
 class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
-    @IBOutlet weak var currentACLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
 
     private let reuseIdentifier = "imageCell"
     private let sectionInsets = UIEdgeInsets(top: 50, left: 20, bottom: 50, right: 20)
     private let itemsPerRow: CGFloat = 3
-    var currentAC: String?
+
     var imageList = [UIImage]()
     var imagePathList = [String]()
     var appDelegate: AppDelegate?
@@ -48,11 +47,8 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
     
     @IBOutlet weak var submitButton: UIButton!
     @IBAction func submitDataAction(_ sender: Any) {
-        currentAC = currentAC!.trimmingCharacters(in: .whitespaces)
-        guard currentAC!.range(of: newACName!) == nil else {
-            displayMessage("The name is already in the databse!", "Error")
-            return
-        }
+     
+
         guard imageList.count > 1 else {
             displayMessage("Pleaase take at least six photo to ensure accuracy!", "Error")
             return
@@ -113,9 +109,9 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
                 }
             }
             
-            let newACNameList = "\(currentAC!),\(newACName!)"
+          
             let newACNum = numOfUser! + 1
-            let updateACNameList = ["/pi01/acquaintance/list/name": newACNameList,
+            let updateACNameList = [
                                     "/pi01/acquaintance/list/number": newACNum,
                                     "/pi01/acquaintance/\(newACNum)/name": newACName!] as [String : Any]
 
@@ -151,12 +147,10 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
         let acRef = ref.child("pi01/acquaintance/list")
         acRefHandle = acRef.observe(.value, with: { (snapshot) in
             let data = snapshot.value as? Dictionary<String, Any>
-            self.currentAC = data!["name"] as! String?
+           
             let number = data!["number"] as! Int?
-            //let start = self.currentAC!.index((self.currentAC?.startIndex)!, offsetBy: 5)
-            //let range = start..<(self.currentAC?.endIndex)!
-            //let displayCurrentAC = self.currentAC![range]
-            self.currentACLabel.text = "Current acquaintance: \(self.currentAC!)"
+
+        
             self.numOfUser = number
         })
         

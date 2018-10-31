@@ -9,7 +9,7 @@
 import UIKit
 
 class BaseTabBarController: UITabBarController {
-    var nameLabelData: String?
+    var acDict: Dictionary<Int, String>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
