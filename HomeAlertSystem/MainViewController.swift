@@ -15,6 +15,20 @@ import FirebaseStorage
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
+    
+    @IBAction func signOutButtonTapped(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+        } catch{
+            
+        }
+        let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+        let appDelegate = UIApplication.shared.delegate
+        appDelegate?.window??.rootViewController = signInPage
+        }
+    
+ 
+
     private let acquaintanceRef = Database.database().reference().child("pi01/acquaintance")
     private var acquaintanceRefHandle: DatabaseHandle?
     private var acquaintanceDictionary: [Int: String] = [:]
