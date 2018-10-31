@@ -22,52 +22,101 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         } catch{
             
         }
-        
         let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
         let appDelegate = UIApplication.shared.delegate
         appDelegate?.window??.rootViewController = signInPage
         
     }
     
-    
-    private let acquaintanceRef = Database.database().reference().child("pi01/acquaintance")
-    private var acquaintanceRefHandle: DatabaseHandle?
-    private var acquaintanceDictionary: [Int: String] = [:]
-    
-    func isStringAnInt(string: String) -> Bool {
-        return Int(string) != nil
-    }
-    
-    private func observeNewAcquaintance()
-    {
-        acquaintanceRefHandle = acquaintanceRef.observe(.childAdded, with: {(snapshot) -> Void in
-            
-            if self.isStringAnInt(string: snapshot.key) == true && Int(snapshot.key) != 0{
-                let data = snapshot.value as! Dictionary<String, Any>
-                if let name = data["name"] as! String?, let index = snapshot.key as String?{
-                    self.acquaintanceDictionary[Int(index)!] = name
-                    self.acquaintanceTableView.reloadData()
-                } else {
-                    print("Error for data reference observer")
-                }
-            }
-        })
-        
-        
-    }
-    
+    @IBOutlet weak var acquaintanceTableView: UITableView!
     
     /*
      Remove all observers when deinitializing
      */
     deinit {
-        if let acquaintanceHandle = acquaintanceRefHandle {
+        if let acquaintanceHandle = acquaintanceRefHandle, let raspberryPiName = raspberryPiName {
+            let acquaintanceRef = Database.database().reference().child("\(raspberryPiName)/acquaintance")
             acquaintanceRef.removeObserver(withHandle: acquaintanceHandle)
         }
     }
     
     
-    @IBOutlet weak var acquaintanceTableView: UITableView!
+    let aiv = UIActivityIndicatorView(style: .whiteLarge)
+    
+    private var raspberryPiName: String?
+    private var acquaintanceRefHandle: DatabaseHandle?
+    private var acquaintanceDictionary: [Int: String] = [:]
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Register the table view cell class and its reuse id
+        self.acquaintanceTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        acquaintanceTableView.delegate = self
+        acquaintanceTableView.dataSource = self
+        
+        //Get the raspberryPiName based on the current user id
+        Database.database().reference().child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let raspberryPiName = value?["\(Auth.auth().currentUser?.uid)"] as? String ?? ""
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        //Configure observer for the raspberryPiName if the raspberryPiName exists
+        if let raspberryPiName = raspberryPiName{
+            
+            observeNewAcquaintance(raspberryPiName: raspberryPiName)
+            self.acquaintanceTableView.reloadData()
+           
+        }
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        //        let videoURL = URL(string: "http://172.20.10.9:8080/camera/livestream.m3u8")
+        //        let player = AVPlayer(url: videoURL!)
+        //        let playerViewController = AVPlayerViewController()
+        //        playerViewController.player = player
+        //        self.present(playerViewController, animated: true) {
+        //            playerViewController.player!.play()
+        //    }
+        
+        
+        
+        //setupPlayer()
+        
+    }
+    
+    func isStringAnInt(string: String) -> Bool {
+        return Int(string) != nil
+    }
+    
+    private func observeNewAcquaintance(raspberryPiName: String)
+    {
+        acquaintanceRefHandle = Database.database().reference().child("\(raspberryPiName)/acquaintance")
+            .observe(.childAdded, with: {(snapshot) -> Void in
+                if snapshot.exists(){
+                    
+                    if self.isStringAnInt(string: snapshot.key) == true && Int(snapshot.key) != 0{
+                        let data = snapshot.value as! Dictionary<String, Any>
+                        if let name = data["name"] as! String?, let index = snapshot.key as String?{
+                            self.acquaintanceDictionary[Int(index)!] = name
+                            self.acquaintanceTableView.reloadData()
+                        } else {
+                            print("Error for data reference observer")
+                        }
+                    }
+                } else {
+                    print ("The aiming firebase path is nil!")
+                }
+            })
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -88,48 +137,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
-    
-    
-    let aiv = UIActivityIndicatorView(style: .whiteLarge)
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Register the table view cell class and its reuse id
-        self.acquaintanceTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        
-        // (optional) include this line if you want to remove the extra empty cell divider lines
-        // self.tableView.tableFooterView = UIView()
-        
-        // This view controller itself will provide the delegate methods and row data for the table view.
-        acquaintanceTableView.delegate = self
-        acquaintanceTableView.dataSource = self
-        
-        
-        observeNewAcquaintance()
-        self.acquaintanceTableView.reloadData()
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        //        let videoURL = URL(string: "http://172.20.10.9:8080/camera/livestream.m3u8")
-        //        let player = AVPlayer(url: videoURL!)
-        //        let playerViewController = AVPlayerViewController()
-        //        playerViewController.player = player
-        //        self.present(playerViewController, animated: true) {
-        //            playerViewController.player!.play()
-        //    }
-        
-        
-        
-        //setupPlayer()
-        
-    }
-    
     //    func setupPlayer() {
     //
     //

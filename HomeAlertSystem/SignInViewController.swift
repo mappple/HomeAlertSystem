@@ -28,6 +28,8 @@ class SignInViewController: UIViewController {
         }
         
         Auth.auth().signIn(withEmail: email, password: password) {(user, error) in
+            //print ("The sign in user id:")
+            //print (user?.user.uid)
             if error != nil {
                 self.displayErrorMessage(error!.localizedDescription)
             } else {
@@ -36,14 +38,15 @@ class SignInViewController: UIViewController {
                 let appDelegate = UIApplication.shared.delegate
                 appDelegate?.window??.rootViewController = homePage
                 
+                
             }
             
         }
     }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
-        
-        
+        let signUpViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
+        self.present(signUpViewController,animated: true)
         
     }
     
