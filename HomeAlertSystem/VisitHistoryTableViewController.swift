@@ -135,6 +135,7 @@ class VisitHistoryTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VisitCell", for: indexPath) as! VisitTableViewCell
+        //let cell = tableView.cellForRow(at: indexPath) as! VisitTableViewCell
         
         //let visitor = visitList[indexPath.row]
         let visitSection = sections[sortedSections[indexPath.section]]
