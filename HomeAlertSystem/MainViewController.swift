@@ -15,8 +15,8 @@ import FirebaseStorage
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
+    
     @IBAction func signOutButtonTapped(_ sender: Any) {
-        
         do {
             try Auth.auth().signOut()
         } catch{
@@ -25,6 +25,33 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
         let appDelegate = UIApplication.shared.delegate
         appDelegate?.window??.rootViewController = signInPage
+        }
+    
+ 
+
+    private let acquaintanceRef = Database.database().reference().child("pi01/acquaintance")
+    private var acquaintanceRefHandle: DatabaseHandle?
+    private var acquaintanceDictionary: [Int: String] = [:]
+    
+    func isStringAnInt(string: String) -> Bool {
+        return Int(string) != nil
+    }
+    
+    private func observeNewAcquaintance()
+    {
+        acquaintanceRefHandle = acquaintanceRef.observe(.childAdded, with: {(snapshot) -> Void in
+            
+            if self.isStringAnInt(string: snapshot.key) == true && Int(snapshot.key) != 0{
+                let data = snapshot.value as! Dictionary<String, Any>
+                if let name = data["name"] as! String?, let index = snapshot.key as String?{
+                    self.acquaintanceDictionary[Int(index)!] = name
+                    self.acquaintanceTableView.reloadData()
+                } else {
+                    print("Error for data reference observer")
+                }
+            }
+        })
+        
         
     }
     
