@@ -175,7 +175,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 //let pi = snapshot.value as? [String:Any]
                 piName = pi![userId!] as? String
                 //piName = pi
-            })
+            }){ (error) in
+                print("ERROR:::::::")
+                print(error.localizedDescription)
+            }
             return piName
         }
         return nil
