@@ -22,21 +22,25 @@ class VisitTableViewCell: UITableViewCell {
     override func prepareForReuse() {
       //  visitorImage.sd_cancelCurrentImageLoad()
       //  visitorImage.image = nil
+        visitorNameLabel.textColor = UIColor.black
     }
     
 }
 
 class VisitHistoryTableViewController: UITableViewController {
 
-    private let dataRef = Database.database().reference().child("pi01/data")
+    //private let dataRef = Database.database().reference().child("pi01/data")
+    private let ref = Database.database().reference()
     private let storage = Storage.storage()
     private var dataRefHandle: DatabaseHandle?
-    var sections = Dictionary<String, Array<Visit>>()
-    var sortedSections = [String]()
-    
-    private func observeNewVisit()
+    var sections = Dictionary<Int, Array<Visit>>()
+    var sortedSections = [Int]()
+    var tabVC: BaseTabBarController?
+    var piName = ""
+    let uid = Auth.auth().currentUser?.uid
+    private func observeNewVisit(piName: String)
     {
-        dataRefHandle = dataRef.observe(.childAdded, with: {(snapshot) -> Void in
+        dataRefHandle = ref.child("\(piName)/data").observe(.childAdded, with: {(snapshot) -> Void in
             let data = snapshot.value as! Dictionary<String, Any>
             if let id = data["id"] as! String?, let strTime = data["time"] as! String?, let intTime = Int(strTime), let strUrl = data["url"] as! String?, let url = URL(string: strUrl){
                 //sectionMark is used to split data into different groups for different days
@@ -46,13 +50,14 @@ class VisitHistoryTableViewController: UITableViewController {
                 
                 //let imageDefault = UIImage(named: "blank")
                 //let image = UIImage(data: data!)
-               // if id == "0" {
-                    self.setUserNotification(id: id)
-               // }
+                if id == "0" {
+                    self.setUserNotification()
+                }
     
                 let df = DateFormatter()
                 df.dateFormat = "dd-MM-yyyy"
-                let day = df.string(from: time)
+               // let day = df.string(from: time)
+                let day = Int(Double(intTime) / 1000.0 / 3600 / 24)
                 //self.visitList.append(Visit(id: id, time: time, url: url))
                 if self.sections.index(forKey: day) == nil {
                     self.sections[day] = [Visit(id: id, time: time, url: url)]
@@ -78,7 +83,7 @@ class VisitHistoryTableViewController: UITableViewController {
      */
     deinit {
         if let dataHandle = dataRefHandle {
-            dataRef.removeObserver(withHandle: dataHandle)
+            ref.removeObserver(withHandle: dataHandle)
         }
     }
     
@@ -87,20 +92,29 @@ class VisitHistoryTableViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.title = "History"
         navigationController?.navigationBar.prefersLargeTitles = true
-        observeNewVisit()
+        tabVC = self.tabBarController as? BaseTabBarController
+        if (uid != nil){
+            ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+                let value = snapshot.value as? [String:Any]
+                //let pi = snapshot.value as? [String:Any]
+                self.piName = (value![self.uid!] as? String)!
+                self.observeNewVisit(piName: self.piName)
+            })
+            
+        }
+//        if tabVC?.piName != nil {
+//            piName = (tabVC?.piName)!
+//        }
+        //observeNewVisit(piName: piName)
        
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    func setUserNotification(id: String) {
+    func setUserNotification() {
         let content = UNMutableNotificationContent()
         content.title = "ALERT!"
         content.sound = UNNotificationSound.default
-        content.body = "DETECT THE PRESENCE OF A STRANGER \(id)!"
+        content.body = "DETECT THE PRESENCE OF A STRANGER!"
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let request = UNNotificationRequest(identifier: "cold", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
@@ -111,31 +125,28 @@ class VisitHistoryTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-
         return sections.count
     }
-//
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        for i in 0..<tableParam.count{
-//            if (section == i){
-//                return tableParam[i].numOfRows
-//            }
-//        }
         return sections[sortedSections[section]]!.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sortedSections[section]
+        let time = Date(timeIntervalSince1970: Double(sortedSections[section] * 24 * 3600))
+        let df = DateFormatter()
+        df.dateFormat = "dd-MM-yyyy"
+        return df.string(from: time)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VisitCell", for: indexPath) as! VisitTableViewCell
-        //let cell = tableView.cellForRow(at: indexPath) as! VisitTableViewCell
-        
-        //let visitor = visitList[indexPath.row]
         let visitSection = sections[sortedSections[indexPath.section]]
         let visitor = visitSection![indexPath.row]
         let tabVC = self.tabBarController as! BaseTabBarController
+        if visitor.id == "0" {
+            cell.visitorNameLabel.textColor = UIColor.red
+        }
         if tabVC.acDict != nil {
             cell.visitorNameLabel.text = tabVC.acDict![Int(visitor.id)!]
         } else {
@@ -143,7 +154,7 @@ class VisitHistoryTableViewController: UITableViewController {
         }
         
         let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        df.dateFormat = "HH:mm:ss"
         let dateString = df.string(from: visitor.time)
         cell.visitDateLabel?.text = dateString
         cell.visitorImage.sd_setImage(with: visitor.url, placeholderImage: UIImage(named: "loading"), options: SDWebImageOptions.continueInBackground) { (image:UIImage?, error:Error?, cacheType: SDImageCacheType, url:URL?) in

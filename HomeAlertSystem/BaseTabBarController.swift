@@ -12,30 +12,27 @@ import Firebase
 class BaseTabBarController: UITabBarController {
     var acDict: Dictionary<Int, String>?
     let uid = Auth.auth().currentUser?.uid
-    var raspberryPiName: String?
+    var piName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+        //getPiName(userId: uid)
     }
     
     //Get raspberry pi name based on the current user id
-    func getPiName(userId: String?) -> String? {
-        var piName: String?
-        if (userId != nil){
-            Database.database().reference().child("users").observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                let pi = snapshot.value as? [String:Any]
-                //let pi = snapshot.value as? [String:Any]
-                piName = pi![userId!] as? String
-                //piName = pi
-            }, withCancel: nil)
-            return piName
-        }
-        return nil
-    }
+//    func getPiName(userId: String?) {
+//       // var piName: String?
+//        if (userId != nil){
+//            Database.database().reference().child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+//                let value = snapshot.value as? [String:Any]
+//                //let pi = snapshot.value as? [String:Any]
+//                self.piName = value![userId!] as? String
+//                //print(piName!)
+//                //piName = pi
+//            })
+//            //return piName
+//        }
+//    }
 
     /*
     // MARK: - Navigation

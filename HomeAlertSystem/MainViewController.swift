@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AVFoundation
 import Firebase
 import FirebaseStorage
 
@@ -53,6 +52,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
+    @IBOutlet weak var pirLabel: UILabel!
     @IBAction func signOutButtonTapped(_ sender: Any) {
         do {
             try Auth.auth().signOut()
@@ -65,38 +65,50 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private var ref = Database.database().reference()
-    
     private var acquaintanceRefHandle: DatabaseHandle?
-    
-    
+    private var pirRefHandle: DatabaseHandle?
     private var acquaintanceDictionary: [Int: String] = [:]
     let uid = Auth.auth().currentUser?.uid
+    var piName = ""
     var tabVC: BaseTabBarController?
-    
-    
-    
+    @IBOutlet weak var acquaintanceTableView: UITableView!
     func isStringAnInt(string: String) -> Bool {
         return Int(string) != nil
     }
     
-    private func observeNewAcquaintance(raspberryPiName: String)
-    {
-        acquaintanceRefHandle = getAcquaintanceRefByPiName(raspberryPiName: raspberryPiName).observe(.childAdded, with: {(snapshot) -> Void in
-            
-            if self.isStringAnInt(string: snapshot.key) == true {
-                let data = snapshot.value as! Dictionary<String, Any>
-                if let name = data["name"] as! String?, let index = snapshot.key as String?{
-                    self.acquaintanceDictionary[Int(index)!] = name
-                    self.acquaintanceTableView.reloadData()
-                    self.tabVC = self.tabBarController as? BaseTabBarController
-                    self.tabVC!.acDict = self.acquaintanceDictionary
-                } else {
-                    print("Error for data reference observer")
+    private func observeNewAcquaintance(piName: String){
+        if piName != ""{
+            acquaintanceRefHandle = ref.child("\(piName)/acquaintance").observe(.childAdded, with: {(snapshot) -> Void in
+                if self.isStringAnInt(string: snapshot.key) == true {
+                    let data = snapshot.value as! Dictionary<String, Any>
+                    if let name = data["name"] as! String?, let index = snapshot.key as String?{
+                        self.acquaintanceDictionary[Int(index)!] = name
+                        self.acquaintanceTableView.reloadData()
+                        self.tabVC = self.tabBarController as? BaseTabBarController
+                        self.tabVC!.acDict = self.acquaintanceDictionary
+                    } else {
+                        print("Error for data reference observer")
+                    }
                 }
-            }
-        })
-        
-        
+            })
+            
+        }
+    }
+    
+    private func observePIR(piName: String){
+        if piName != ""{
+            pirRefHandle = ref.child("\(piName)/pir/pirstate").observe(.value, with: {(snapshot) -> Void in
+                    let data = snapshot.value as! Int
+                    if data == 0 {
+                        self.pirLabel.text = "These is no abnormal situation."
+                    } else if data == 1 {
+                        self.pirLabel.text = "Detect an abnormal situation!"
+                    }
+                    
+                    
+            })
+            
+        }
     }
     
     
@@ -104,33 +116,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
      Remove all observers when deinitializing
      */
     deinit {
-        
-    
-        
-        if let acquaintanceHandle = acquaintanceRefHandle, let raspberryPiName = getPiName(userId: uid){
-            
-            getAcquaintanceRefByPiName(raspberryPiName: raspberryPiName).removeObserver(withHandle: acquaintanceHandle)
-            
-            
-        }
+        ref.removeAllObservers()
     }
-    
-    
-    @IBOutlet weak var acquaintanceTableView: UITableView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        
-        return acquaintanceDictionary.count
-        
+        return acquaintanceDictionary.count - 1
         
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "acquaintanceCell", for: indexPath)
         cell.textLabel?.text = acquaintanceDictionary[indexPath.row + 1]
-        
         return cell
     }
     
@@ -139,51 +136,55 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Current Acquaintance List"
+        return "WHITELIST"
     }
     
     //let aiv = UIActivityIndicatorView(style: .whiteLarge)
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        
-        if editingStyle == .delete, let raspberryPiName = getPiName(userId: uid) {
+        if editingStyle == .delete && piName != "" {
             // Delete the row from the data source
             acquaintanceDictionary.removeValue(forKey: indexPath.row + 1)
-            let newACNum = acquaintanceDictionary.count
-            let updateACNameList = ["/\(raspberryPiName)/acquaintance/list/number": newACNum]
+            let newACNum = acquaintanceDictionary.count - 1
+            let deleteNo = indexPath.row + 1
+            let updateACNameList = ["/\(piName)/acquaintance/list/number": newACNum,
+                                    "/\(piName)/acquaintance/list/deleteNo": deleteNo] as [String : Any]
             ref.updateChildValues(updateACNameList)
-            
-            getAcquaintanceRefByPiName(raspberryPiName: raspberryPiName).child(String(indexPath.row + 1)).removeValue()
+            ref.child("\(piName)/acquaintance").child(String(indexPath.row + 1)).removeValue()
             tableView.reloadData()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Register the table view cell class and its reuse id
         self.acquaintanceTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         acquaintanceTableView.delegate = self
         acquaintanceTableView.dataSource = self
-        
-        
+        if (uid != nil){
+            ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? [String:Any]
+            //let pi = snapshot.value as? [String:Any]
+                self.piName = (value![self.uid!] as? String)!
+                self.observeNewAcquaintance(piName: self.piName)
+                self.observePIR(piName: self.piName)
+        })
        
-        
+        }
+       // self.tabVC = self.tabBarController as? BaseTabBarController
+       // self.tabVC!.acDict = self.acquaintanceDictionary
         
         //Configure observer for the raspberryPiName if the raspberryPiName exists
         
-        if let raspberryPiName = getPiName(userId: uid){
-            
-            observeNewAcquaintance(raspberryPiName: raspberryPiName)
-            self.acquaintanceTableView.reloadData()
-           
-        }
-        print("pi name::::::::::::::::::")
-        print (getPiName(userId: uid))
-        
-        setUpSettingButton()
-        
+        self.acquaintanceTableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+       
+      
+      
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -200,74 +201,30 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         //setupPlayer()
+        //self.acquaintanceTableView.reloadData()
         
     }
     
 
     
-    func getPiName(userId: String?) -> String?{
-        
-        var piName: String?
-        
-        
-           
-            
-            if (userId != nil){
-                Database.database().reference().child("users").observeSingleEvent(of: .value, with: { (snapshot) in
-                    
-                    let pi = snapshot.value as? [String:Any]
-                    //let pi = snapshot.value as? [String:Any]
-                    piName = pi![userId!] as? String
-                    //piName = pi
-                }){ (error) in
-                    print("ERROR:::::::")
-                    print(error.localizedDescription)
-                }
-                
-            }
-            
-        
-        
-        print(":::::::::::::::::::")
-        print(piName)
-        print("::::::::::::::::::")
-        
-        return piName
-        
-    }
-    
-    func getAcquaintanceRefByPiName(raspberryPiName: String) -> DatabaseReference{
-        let acquaintanceRef = Database.database().reference().child("\(raspberryPiName)/acquaintance")
-        return acquaintanceRef
-    }
-    
-//    private func observeNewAcquaintance(raspberryPiName: String)
-//    {
-//
-//        acquaintanceRefHandle = getAcquaintanceRefByPiName(raspberryPiName: raspberryPiName)
-//            .observe(.childAdded, with: {(snapshot) -> Void in
-//                if snapshot.exists(){
-//
-//                    if self.isStringAnInt(string: snapshot.key) == true && Int(snapshot.key) != 0{
-//                        let data = snapshot.value as! Dictionary<String, Any>
-//                        if let name = data["name"] as! String?, let index = snapshot.key as String?{
-//                            self.acquaintanceDictionary[Int(index)!] = name
-//                            self.acquaintanceTableView.reloadData()
-//                        } else {
-//                            print("Error for data reference observer")
-//                        }
-//                    }
-//                } else {
-//                    print ("The aiming firebase path is nil!")
-//                }
+//    func getPiName(userId: String?) -> String?{
+//        var piName: String?
+//        if (userId != nil){
+//            ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+//                let pi = snapshot.value as? [String:Any]
+//                //let pi = snapshot.value as? [String:Any]
+//                piName = pi![userId!] as? String
+//                self.currentPi = piName!
+//                //piName = pi
 //            })
+//
+//            return piName
+//        }
+//        return nil
+//
 //    }
     
 
-    
-   
-    
-   
     //    func setupPlayer() {
     //
     //

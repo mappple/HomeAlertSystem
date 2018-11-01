@@ -23,10 +23,6 @@ class AddCameraViewController: UIViewController, UIImagePickerControllerDelegate
     var gallerySize: Int?
     
     @IBAction func takePhoto(_ sender: Any) {
-        guard numOfUser != nil else {
-            displayMessage("Please input a name before take photo", "Error")
-            return
-        }
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
             imagePicker.sourceType = UIImagePickerController.SourceType.camera
             imagePicker.cameraFlashMode = UIImagePickerController.CameraFlashMode.off
