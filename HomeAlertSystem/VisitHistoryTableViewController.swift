@@ -108,7 +108,8 @@ class VisitHistoryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationItem.title = "History"
+        navigationController?.navigationBar.prefersLargeTitles = true
         observeNewVisit()
         
     }

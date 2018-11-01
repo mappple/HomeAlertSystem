@@ -123,6 +123,7 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = true
         collectionView.delegate = self
         appDelegate = UIApplication.shared.delegate as? AppDelegate
         managedObjectContext = (appDelegate?.persistentContainer.viewContext)

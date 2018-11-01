@@ -72,7 +72,7 @@
                     <connections>
                         <segue destination="SZx-qN-CuP" kind="relationship" relationship="viewControllers" id="OZZ-u9-xxW"/>
                         <segue destination="uME-vZ-Ced" kind="relationship" relationship="viewControllers" id="hKY-KM-GEQ"/>
-                        <segue destination="2ra-gs-X7S" kind="relationship" relationship="viewControllers" id="S7A-FU-1Ku"/>
+                        <segue destination="RAT-CT-x85" kind="relationship" relationship="viewControllers" id="S7A-FU-1Ku"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eV7-Aj-ogm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -270,7 +270,7 @@
             </objects>
             <point key="canvasLocation" x="-4202" y="-1032"/>
         </scene>
-        <!--Item-->
+        <!--Visit History Table View Controller-->
         <scene sceneID="2sA-Ul-pqy">
             <objects>
                 <tableViewController id="2ra-gs-X7S" customClass="VisitHistoryTableViewController" customModule="HomeAlertSystem" customModuleProvider="target" sceneMemberID="viewController">
@@ -331,11 +331,12 @@
                             <outlet property="delegate" destination="2ra-gs-X7S" id="Bi5-Ok-tUr"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" image="details" id="p8R-Ex-6vG"/>
+                    <navigationItem key="navigationItem" id="BR3-m0-JMV"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m8u-hf-NbE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2114" y="-1343"/>
+            <point key="canvasLocation" x="-1175.2" y="-1343.4782608695652"/>
         </scene>
         <!--Add-->
         <scene sceneID="TB9-Ub-fQ1">
@@ -356,7 +357,7 @@
             </objects>
             <point key="canvasLocation" x="-2114.4000000000001" y="-657.12143928035982"/>
         </scene>
-        <!--Add  an Acquaintance-->
+        <!--Add to White List-->
         <scene sceneID="KnE-tW-Zee">
             <objects>
                 <viewController id="3to-Sp-wTs" customClass="AddGalleryViewController" customModule="HomeAlertSystem" customModuleProvider="target" sceneMemberID="viewController">
@@ -450,7 +451,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uaB-2h-xjN"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add  an Acquaintance" id="zWv-35-Wwj">
+                    <navigationItem key="navigationItem" title="Add to White List" id="zWv-35-Wwj">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="YsF-uv-KNn">
                             <connections>
                                 <segue destination="Fa0-si-OaI" kind="show" identifier="passNameSegue" id="bKC-rE-0ja"/>
@@ -486,6 +487,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XwW-wD-yht" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2114.4000000000001" y="-2023.5382308845578"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="cUD-Xf-3Hg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RAT-CT-x85" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="details" id="p8R-Ex-6vG"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cJd-Cr-DYc">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2ra-gs-X7S" kind="relationship" relationship="rootViewController" id="uTM-Ii-zhM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8cr-P7-a0r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2114.4000000000001" y="-1343.4782608695652"/>
         </scene>
     </scenes>
     <resources>
