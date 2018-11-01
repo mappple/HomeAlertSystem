@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseStorage
 import SDWebImage
+import UserNotifications
 
 
 class VisitTableViewCell: UITableViewCell {
@@ -25,20 +26,13 @@ class VisitTableViewCell: UITableViewCell {
     
 }
 
-
-
 class VisitHistoryTableViewController: UITableViewController {
 
     private let dataRef = Database.database().reference().child("pi01/data")
     private let storage = Storage.storage()
-    //var tabVC: BaseTabBarController?
     private var dataRefHandle: DatabaseHandle?
-    //private var visitList: [Visit] = []
-    //var sectionMark: Int?
     var sections = Dictionary<String, Array<Visit>>()
     var sortedSections = [String]()
-    
-    //private var tableParam: [TableElementParam] = []
     
     private func observeNewVisit()
     {
@@ -50,10 +44,12 @@ class VisitHistoryTableViewController: UITableViewController {
                 let time = Date(timeIntervalSince1970: (Double(intTime) / 1000.0))
                // let data = try? Data(contentsOf: url)
                 
-                
                 //let imageDefault = UIImage(named: "blank")
                 //let image = UIImage(data: data!)
-                
+               // if id == "0" {
+                    self.setUserNotification(id: id)
+               // }
+    
                 let df = DateFormatter()
                 df.dateFormat = "dd-MM-yyyy"
                 let day = df.string(from: time)
@@ -65,26 +61,7 @@ class VisitHistoryTableViewController: UITableViewController {
                 }
                
                 self.sortedSections = self.sections.keys.sorted(by: >)
-                //self.visitList.sort() {$0.time > $1.time}
-                
-              //  if (self.tableParam == nil){
-              //      let tableElementParam = TableElementParam(sectionMark: self.sectionMark!, numOfRows: 1)
-//                    self.tableParam.append(tableElementParam)
-//                } else {
-//                    var i = 0
-//                    for item in self.tableParam {
-//                        if (item.sectionMark == self.sectionMark){
-//                            item.numOfRows = item.numOfRows + 1
-//                            i = i + 1
-//                        }
-//                    }
-//                    if (i == 0){
-//                        let tableElementParam = TableElementParam(sectionMark: self.sectionMark!, numOfRows: 1)
-//                        self.tableParam.append(tableElementParam)
-//                    }
-//                    self.tableParam.sort() {$0.sectionMark > $1.sectionMark}
-//                }
-//
+
                 self.tableView.reloadData()
             } else {
                 print("Error for data reference observer")
@@ -111,7 +88,23 @@ class VisitHistoryTableViewController: UITableViewController {
         navigationItem.title = "History"
         navigationController?.navigationBar.prefersLargeTitles = true
         observeNewVisit()
+       
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    func setUserNotification(id: String) {
+        let content = UNMutableNotificationContent()
+        content.title = "ALERT!"
+        content.sound = UNNotificationSound.default
+        content.body = "DETECT THE PRESENCE OF A STRANGER \(id)!"
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let request = UNNotificationRequest(identifier: "cold", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+
     }
     
 
