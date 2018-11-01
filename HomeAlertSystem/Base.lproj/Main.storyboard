@@ -239,7 +239,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWY-L1-Pyp">
-                                <rect key="frame" x="16" y="345" width="114" height="30"/>
+                                <rect key="frame" x="16" y="479" width="114" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Cancel"/>
@@ -248,27 +248,41 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27d-ra-5BW">
-                                <rect key="frame" x="245" y="345" width="114" height="30"/>
+                                <rect key="frame" x="245" y="479" width="114" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Register"/>
                                 <connections>
-                                    <action selector="SignUpConfirmButtonTapped:" destination="6DT-1v-IeF" eventType="touchUpInside" id="J9F-uP-boG"/>
-                                    <action selector="registerButtonTapped:" destination="6DT-1v-IeF" eventType="touchUpInside" id="mR6-Yw-juS"/>
+                                    <action selector="signUpConfirmButtonTapped:" destination="6DT-1v-IeF" eventType="touchUpInside" id="DFa-7u-VVX"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please enter the name of your raspberry pi" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wOn-VR-ew4">
+                                <rect key="frame" x="16" y="355" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Raspberry Pi Info:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yoz-Ii-SOj">
+                                <rect key="frame" x="16" y="315" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ZXs-hZ-GFc"/>
                     </view>
                     <connections>
+                        <outlet property="raspberryPiNameTextField" destination="wOn-VR-ew4" id="ZpA-ZJ-psK"/>
                         <outlet property="userEmailTextField" destination="bkI-IM-0Jx" id="w3x-Yi-sBU"/>
                         <outlet property="userPasswordTextField" destination="wNk-en-zvH" id="rbY-yX-xD1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lhb-RT-gtX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4202" y="-1032"/>
+            <point key="canvasLocation" x="-4202.3999999999996" y="-1032.2338830584708"/>
         </scene>
         <!--Visit History Table View Controller-->
         <scene sceneID="2sA-Ul-pqy">
