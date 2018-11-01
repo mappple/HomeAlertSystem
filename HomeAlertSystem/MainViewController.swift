@@ -168,7 +168,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             //let pi = snapshot.value as? [String:Any]
                 self.piName = (value![self.uid!] as? String)!
                 self.observeNewAcquaintance(piName: self.piName)
-                self.observePIR(piName: self.piName)
+               // self.observePIR(piName: self.piName)
         })
        
         }
@@ -178,6 +178,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         //Configure observer for the raspberryPiName if the raspberryPiName exists
         
         self.acquaintanceTableView.reloadData()
+        setUpSettingButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
