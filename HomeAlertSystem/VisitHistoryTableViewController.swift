@@ -19,7 +19,8 @@ class VisitTableViewCell: UITableViewCell {
     @IBOutlet weak var visitorImage: UIImageView!
     
     override func prepareForReuse() {
-        visitorImage.image = nil
+      //  visitorImage.sd_cancelCurrentImageLoad()
+      //  visitorImage.image = nil
     }
     
 }
@@ -30,7 +31,7 @@ class VisitHistoryTableViewController: UITableViewController {
 
     private let dataRef = Database.database().reference().child("pi01/data")
     private let storage = Storage.storage()
-    
+    //var tabVC: BaseTabBarController?
     private var dataRefHandle: DatabaseHandle?
     //private var visitList: [Visit] = []
     //var sectionMark: Int?
@@ -63,7 +64,7 @@ class VisitHistoryTableViewController: UITableViewController {
                     self.sections[day]!.append(Visit(id: id, time: time, url: url))
                 }
                
-                self.sortedSections = self.sections.keys.sorted()
+                self.sortedSections = self.sections.keys.sorted(by: >)
                 //self.visitList.sort() {$0.time > $1.time}
                 
               //  if (self.tableParam == nil){
@@ -107,7 +108,8 @@ class VisitHistoryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationItem.title = "History"
+        navigationController?.navigationBar.prefersLargeTitles = true
         observeNewVisit()
         
     }
@@ -140,27 +142,37 @@ class VisitHistoryTableViewController: UITableViewController {
         //let visitor = visitList[indexPath.row]
         let visitSection = sections[sortedSections[indexPath.section]]
         let visitor = visitSection![indexPath.row]
-        cell.visitorNameLabel?.text = visitor.id
+        let tabVC = self.tabBarController as! BaseTabBarController
+        if tabVC.acDict != nil {
+            cell.visitorNameLabel.text = tabVC.acDict![Int(visitor.id)!]
+        } else {
+            cell.visitorNameLabel?.text = visitor.id
+        }
         
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd hh:mm:ss"
         let dateString = df.string(from: visitor.time)
         cell.visitDateLabel?.text = dateString
-        
-//        DispatchQueue.global().async {
-//            let data = try? Data(contentsOf: visitor.url)
-//            DispatchQueue.main.async {
-//                cell.visitorImage.image = UIImage(data: data!)
-//            }
-//        }
-        cell.visitorImage.sd_setImage(with: visitor.url) { (image:UIImage?, error:Error?, cacheType: SDImageCacheType, url:URL?) in
+        cell.visitorImage.sd_setImage(with: visitor.url, placeholderImage: UIImage(named: "loading"), options: SDWebImageOptions.continueInBackground) { (image:UIImage?, error:Error?, cacheType: SDImageCacheType, url:URL?) in
             let itemSize = CGSize.init(width: 320, height: 180)
             UIGraphicsBeginImageContextWithOptions(itemSize, false, UIScreen.main.scale);
             let imageRect = CGRect.init(origin: CGPoint.zero, size: itemSize)
             cell.visitorImage.image?.draw(in: imageRect)
             cell.visitorImage.image = UIGraphicsGetImageFromCurrentImageContext()!;
             UIGraphicsEndImageContext();
+            //tableView.reloadRows(at: [indexPath], with: .fade)
+            
         }
+//        cell.visitorImage.sd_setImage(with: visitor.url) { (image:UIImage?, error:Error?, cacheType: SDImageCacheType, url:URL?) in
+//            let itemSize = CGSize.init(width: 320, height: 180)
+//            UIGraphicsBeginImageContextWithOptions(itemSize, false, UIScreen.main.scale);
+//            let imageRect = CGRect.init(origin: CGPoint.zero, size: itemSize)
+//            cell.visitorImage.image?.draw(in: imageRect)
+//            cell.visitorImage.image = UIGraphicsGetImageFromCurrentImageContext()!;
+//            UIGraphicsEndImageContext();
+//            //tableView.reloadRows(at: [indexPath], with: .fade)
+//
+//        }
         
         return cell
     }
