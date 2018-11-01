@@ -17,38 +17,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxA-16-taG">
-                                <rect key="frame" x="16" y="538" width="343" height="30"/>
-                                <state key="normal" title="Save Photo"/>
-                                <connections>
-                                    <action selector="savePhoto:" destination="Fa0-si-OaI" eventType="touchUpInside" id="sQi-hr-MBu"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yGz-5m-e4L">
                                 <rect key="frame" x="8" y="72" width="359" height="359"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="yGz-5m-e4L" secondAttribute="height" multiplier="1:1" id="ajT-tB-JFc"/>
-                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVR-64-v8t">
-                                <rect key="frame" x="16" y="475" width="343" height="30"/>
+                                <rect key="frame" x="16" y="457" width="343" height="30"/>
                                 <state key="normal" title="Take Photo"/>
                                 <connections>
                                     <action selector="takePhoto:" destination="Fa0-si-OaI" eventType="touchUpInside" id="s42-M1-dKD"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxA-16-taG">
+                                <rect key="frame" x="16" y="495" width="343" height="30"/>
+                                <state key="normal" title="Save Photo"/>
+                                <connections>
+                                    <action selector="savePhoto:" destination="Fa0-si-OaI" eventType="touchUpInside" id="sQi-hr-MBu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="tVR-64-v8t" firstAttribute="trailing" secondItem="uxA-16-taG" secondAttribute="trailing" id="05b-nV-1Fa"/>
-                            <constraint firstItem="yGz-5m-e4L" firstAttribute="leading" secondItem="GhS-x6-fMa" secondAttribute="leading" constant="8" id="Mq1-NJ-VLY"/>
-                            <constraint firstItem="uxA-16-taG" firstAttribute="top" secondItem="tVR-64-v8t" secondAttribute="bottom" constant="33" id="aLf-Va-2Po"/>
-                            <constraint firstItem="tVR-64-v8t" firstAttribute="top" secondItem="yGz-5m-e4L" secondAttribute="bottom" constant="44" id="bs5-7a-WC9"/>
-                            <constraint firstItem="tVR-64-v8t" firstAttribute="leading" secondItem="4H1-iR-E3U" secondAttribute="leadingMargin" id="f4H-RD-Dum"/>
-                            <constraint firstItem="GhS-x6-fMa" firstAttribute="trailing" secondItem="yGz-5m-e4L" secondAttribute="trailing" constant="8" id="pmG-nS-ypT"/>
-                            <constraint firstItem="tVR-64-v8t" firstAttribute="leading" secondItem="uxA-16-taG" secondAttribute="leading" id="ske-bl-axN"/>
-                            <constraint firstItem="yGz-5m-e4L" firstAttribute="top" secondItem="GhS-x6-fMa" secondAttribute="top" constant="8" id="xgN-NA-4SV"/>
-                            <constraint firstItem="tVR-64-v8t" firstAttribute="centerX" secondItem="yGz-5m-e4L" secondAttribute="centerX" id="zYm-VX-sPZ"/>
+                            <constraint firstItem="uxA-16-taG" firstAttribute="leading" secondItem="tVR-64-v8t" secondAttribute="leading" id="0ki-Zl-lv1"/>
+                            <constraint firstItem="GhS-x6-fMa" firstAttribute="trailing" secondItem="yGz-5m-e4L" secondAttribute="trailing" constant="8" id="Abm-gV-Y2d"/>
+                            <constraint firstItem="yGz-5m-e4L" firstAttribute="top" secondItem="GhS-x6-fMa" secondAttribute="top" constant="8" id="IkS-sZ-Kny"/>
+                            <constraint firstItem="uxA-16-taG" firstAttribute="trailing" secondItem="tVR-64-v8t" secondAttribute="trailing" id="MK1-Jm-p9C"/>
+                            <constraint firstItem="tVR-64-v8t" firstAttribute="top" secondItem="yGz-5m-e4L" secondAttribute="bottom" constant="26" id="Y2b-7k-Xgu"/>
+                            <constraint firstItem="uxA-16-taG" firstAttribute="top" secondItem="tVR-64-v8t" secondAttribute="bottom" constant="8" symbolic="YES" id="eQy-ws-use"/>
+                            <constraint firstAttribute="bottom" secondItem="tVR-64-v8t" secondAttribute="bottom" constant="180" id="mnp-wP-ieG"/>
+                            <constraint firstItem="yGz-5m-e4L" firstAttribute="leading" secondItem="GhS-x6-fMa" secondAttribute="leading" constant="8" id="qLl-fg-f53"/>
+                            <constraint firstItem="tVR-64-v8t" firstAttribute="leading" secondItem="4H1-iR-E3U" secondAttribute="leadingMargin" id="syn-ge-eNE"/>
+                            <constraint firstItem="tVR-64-v8t" firstAttribute="centerX" secondItem="yGz-5m-e4L" secondAttribute="centerX" id="xNc-Wo-LZk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GhS-x6-fMa"/>
                     </view>
@@ -58,7 +56,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y6M-hs-DnP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-327.19999999999999" y="-657.12143928035982"/>
+            <point key="canvasLocation" x="-258" y="-657"/>
         </scene>
         <!--Base Tab Bar Controller-->
         <scene sceneID="Q7a-TM-b1s">
@@ -79,7 +77,7 @@
             </objects>
             <point key="canvasLocation" x="-3170" y="-1532"/>
         </scene>
-        <!--Main View Controller-->
+        <!--SafePi - Home Alert System-->
         <scene sceneID="FYl-Sp-nrH">
             <objects>
                 <viewController id="Lsj-Ih-Zwm" customClass="MainViewController" customModule="HomeAlertSystem" customModuleProvider="target" sceneMemberID="viewController">
@@ -88,11 +86,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xv5-e1-7mj">
-                                <rect key="frame" x="0.0" y="64" width="375" height="299"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="333.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="299" id="qzI-tc-J3e"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="acquaintanceCell" textLabel="yXS-54-TAL" style="IBUITableViewCellStyleDefault" id="imh-op-heU">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -121,22 +116,36 @@
                                     <action selector="signOutButtonTapped:" destination="Lsj-Ih-Zwm" eventType="touchUpInside" id="Pne-5D-20b"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDO-GJ-iuz">
+                                <rect key="frame" x="16" y="529" width="343" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="6KF-d8-uwS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="xv5-e1-7mj" firstAttribute="trailing" secondItem="cSI-4M-2f8" secondAttribute="trailing" id="5Ng-qH-Xgq"/>
-                            <constraint firstItem="xv5-e1-7mj" firstAttribute="centerX" secondItem="5eK-aJ-KMc" secondAttribute="centerX" id="JB0-xr-nll"/>
-                            <constraint firstItem="5eK-aJ-KMc" firstAttribute="top" secondItem="xv5-e1-7mj" secondAttribute="bottom" constant="85" id="PzT-tr-7FN"/>
-                            <constraint firstItem="xv5-e1-7mj" firstAttribute="top" secondItem="cSI-4M-2f8" secondAttribute="top" id="ipm-ta-XHc"/>
-                            <constraint firstItem="xv5-e1-7mj" firstAttribute="leading" secondItem="cSI-4M-2f8" secondAttribute="leading" id="mDN-iy-qGs"/>
-                            <constraint firstItem="5eK-aJ-KMc" firstAttribute="leading" secondItem="Hfd-BX-3am" secondAttribute="leadingMargin" id="wRY-kI-e3e"/>
+                            <constraint firstItem="YDO-GJ-iuz" firstAttribute="top" secondItem="5eK-aJ-KMc" secondAttribute="bottom" constant="51" id="2xX-Yv-5ns"/>
+                            <constraint firstItem="YDO-GJ-iuz" firstAttribute="leading" secondItem="5eK-aJ-KMc" secondAttribute="leading" id="4bt-gb-xuZ"/>
+                            <constraint firstItem="xv5-e1-7mj" firstAttribute="height" secondItem="Hfd-BX-3am" secondAttribute="height" multiplier="0.5" id="8LM-81-mSu"/>
+                            <constraint firstItem="YDO-GJ-iuz" firstAttribute="trailing" secondItem="5eK-aJ-KMc" secondAttribute="trailing" id="OrB-pY-Tl4"/>
+                            <constraint firstItem="xv5-e1-7mj" firstAttribute="top" secondItem="cSI-4M-2f8" secondAttribute="top" id="bgp-KB-Xwc"/>
+                            <constraint firstItem="xv5-e1-7mj" firstAttribute="trailing" secondItem="cSI-4M-2f8" secondAttribute="trailing" id="hMP-Ii-LX5"/>
+                            <constraint firstItem="YDO-GJ-iuz" firstAttribute="centerX" secondItem="xv5-e1-7mj" secondAttribute="centerX" id="kva-uj-Pyw"/>
+                            <constraint firstItem="YDO-GJ-iuz" firstAttribute="leading" secondItem="Hfd-BX-3am" secondAttribute="leadingMargin" id="kxg-MY-cnL"/>
+                            <constraint firstItem="xv5-e1-7mj" firstAttribute="leading" secondItem="cSI-4M-2f8" secondAttribute="leading" id="xM6-2E-MrG"/>
+                            <constraint firstItem="cSI-4M-2f8" firstAttribute="bottom" secondItem="YDO-GJ-iuz" secondAttribute="bottom" constant="52" id="yYC-wE-wSL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cSI-4M-2f8"/>
                     </view>
-                    <navigationItem key="navigationItem" id="qRj-ZE-oQA"/>
+                    <navigationItem key="navigationItem" title="SafePi - Home Alert System" id="qRj-ZE-oQA"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="acquaintanceTableView" destination="xv5-e1-7mj" id="Ny9-Up-iWb"/>
+                        <outlet property="pirLabel" destination="YDO-GJ-iuz" id="gtF-sG-D0f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a6X-qb-6js" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -207,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvL-0A-lwL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4964" y="-1032"/>
+            <point key="canvasLocation" x="-5062" y="-1032"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="af0-zB-NCt">
@@ -371,7 +380,7 @@
             </objects>
             <point key="canvasLocation" x="-2114.4000000000001" y="-657.12143928035982"/>
         </scene>
-        <!--Add to White List-->
+        <!--Add to WhiteList-->
         <scene sceneID="KnE-tW-Zee">
             <objects>
                 <viewController id="3to-Sp-wTs" customClass="AddGalleryViewController" customModule="HomeAlertSystem" customModuleProvider="target" sceneMemberID="viewController">
@@ -465,7 +474,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uaB-2h-xjN"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add to White List" id="zWv-35-Wwj">
+                    <navigationItem key="navigationItem" title="Add to WhiteList" id="zWv-35-Wwj">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="YsF-uv-KNn">
                             <connections>
                                 <segue destination="Fa0-si-OaI" kind="show" identifier="passNameSegue" id="bKC-rE-0ja"/>
@@ -481,7 +490,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SXI-4z-Hl0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1263.2" y="-657.12143928035982"/>
+            <point key="canvasLocation" x="-1175" y="-657"/>
         </scene>
         <!--Main-->
         <scene sceneID="t51-e4-5K2">
@@ -502,11 +511,11 @@
             </objects>
             <point key="canvasLocation" x="-2114.4000000000001" y="-2023.5382308845578"/>
         </scene>
-        <!--Item-->
+        <!--History-->
         <scene sceneID="cUD-Xf-3Hg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RAT-CT-x85" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="details" id="p8R-Ex-6vG"/>
+                    <tabBarItem key="tabBarItem" title="History" image="details" id="p8R-Ex-6vG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cJd-Cr-DYc">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

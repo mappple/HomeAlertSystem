@@ -10,7 +10,6 @@
 		13149731322E49F55A038FD3 /* Pods_HomeAlertSystemTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9826656EE0FABCE85C3FCCA2 /* Pods_HomeAlertSystemTests.framework */; };
 		504A57DC21888A220055C18E /* VisitHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504A57DB21888A1B0055C18E /* VisitHistoryTableViewController.swift */; };
 		504A57DE21888A2C0055C18E /* Visit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504A57DD21888A2C0055C18E /* Visit.swift */; };
-		504A57E021888B680055C18E /* TableElementParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504A57DF21888B680055C18E /* TableElementParam.swift */; };
 		505FDC6E217ECFEF00E276DB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505FDC6D217ECFEF00E276DB /* MainViewController.swift */; };
 		505FDC71217ED49400E276DB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505FDC70217ED49400E276DB /* CoreData.framework */; };
 		505FDC74217ED4CA00E276DB /* HomeAlertSystem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 505FDC72217ED4CA00E276DB /* HomeAlertSystem.xcdatamodeld */; };
@@ -58,7 +57,6 @@
 		310D6116C0B2339CCBAF4418 /* Pods_HomeAlertSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeAlertSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		504A57DB21888A1B0055C18E /* VisitHistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitHistoryTableViewController.swift; sourceTree = "<group>"; };
 		504A57DD21888A2C0055C18E /* Visit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Visit.swift; sourceTree = "<group>"; };
-		504A57DF21888B680055C18E /* TableElementParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableElementParam.swift; sourceTree = "<group>"; };
 		505FDC6D217ECFEF00E276DB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		505FDC70217ED49400E276DB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		505FDC73217ED4CA00E276DB /* HomeAlertSystem.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HomeAlertSystem.xcdatamodel; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 		50686EA02170837300E97676 /* HomeAlertSystem */ = {
 			isa = PBXGroup;
 			children = (
-				504A57DF21888B680055C18E /* TableElementParam.swift */,
 				504A57DD21888A2C0055C18E /* Visit.swift */,
 				504A57DB21888A1B0055C18E /* VisitHistoryTableViewController.swift */,
 				505FDC89218319F900E276DB /* ImageMetaData+CoreDataClass.swift */,
@@ -446,7 +443,6 @@
 				505FDC7E21802D4700E276DB /* SignUpViewController.swift in Sources */,
 				504A57DE21888A2C0055C18E /* Visit.swift in Sources */,
 				505FDC8E21831E5100E276DB /* ImageCollectionViewCell.swift in Sources */,
-				504A57E021888B680055C18E /* TableElementParam.swift in Sources */,
 				505FDC78217EEFFE00E276DB /* BaseTabBarController.swift in Sources */,
 				50686EA22170837300E97676 /* AppDelegate.swift in Sources */,
 				504A57DC21888A220055C18E /* VisitHistoryTableViewController.swift in Sources */,

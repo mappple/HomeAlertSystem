@@ -19,13 +19,15 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
     private let reuseIdentifier = "imageCell"
     private let sectionInsets = UIEdgeInsets(top: 50, left: 20, bottom: 50, right: 20)
     private let itemsPerRow: CGFloat = 3
-
+    let uid = Auth.auth().currentUser?.uid
     var imageList = [UIImage]()
     var imagePathList = [String]()
     var appDelegate: AppDelegate?
     var managedObjectContext: NSManagedObjectContext?
     var newACName: String?
     var numOfUser: Int?
+    var tabVC: BaseTabBarController?
+    var piName = ""
     //var tabBar: BaseTabBarController?
     private var ref = Database.database().reference()
     //private var acRef = Database.database().reference().child("pi01").child("acquaintance")
@@ -48,11 +50,11 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
     @IBOutlet weak var submitButton: UIButton!
     @IBAction func submitDataAction(_ sender: Any) {
      
-
         guard imageList.count > 1 else {
             displayMessage("Pleaase take at least six photo to ensure accuracy!", "Error")
             return
         }
+        submitButton.isEnabled = false
         for (index, name) in imagePathList.enumerated() {
             
             let data = imageList[index].jpegData(compressionQuality: 0)
@@ -76,7 +78,7 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
                 if index == self.imageList.count - 1 {
                     self.displayMessage("Upload photo successfully!", "Congratulation")
                     let ACNum = self.numOfUser!
-                    let setPhotoNum = ["/pi01/acquaintance/\(ACNum)/photoNum": self.imageList.count]
+                    let setPhotoNum = ["/\(self.piName)/acquaintance/\(ACNum)/photoNum": self.imageList.count]
                     self.ref.updateChildValues(setPhotoNum)
                     self.cleanCoreData()
                     self.imageList.removeAll()
@@ -112,10 +114,11 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
           
             let newACNum = numOfUser! + 1
             let updateACNameList = [
-                                    "/pi01/acquaintance/list/number": newACNum,
-                                    "/pi01/acquaintance/\(newACNum)/name": newACName!] as [String : Any]
+                                    "/\(self.piName)/acquaintance/list/number": newACNum,
+                                    "/\(self.piName)/acquaintance/\(newACNum)/name": newACName!] as [String : Any]
 
             ref.updateChildValues(updateACNameList)
+            
         }
 
         
@@ -123,13 +126,35 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
         collectionView.delegate = self
         appDelegate = UIApplication.shared.delegate as? AppDelegate
         managedObjectContext = (appDelegate?.persistentContainer.viewContext)
         
         submitButton.isEnabled = false
+//        tabVC = self.tabBarController as? BaseTabBarController
+//        if tabVC?.piName != nil {
+//             piName = (tabVC?.piName)!
+//        }
+        if (uid != nil){
+            ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+                let value = snapshot.value as? [String:Any]
+                //let pi = snapshot.value as? [String:Any]
+                self.piName = (value![self.uid!] as? String)!
+                let acRef = self.ref.child("\(self.piName)/acquaintance/list")
+                self.acRefHandle = acRef.observe(.value, with: { (snapshot) in
+                    let data = snapshot.value as? Dictionary<String, Any>
+                    
+                    let number = data!["number"] as! Int?
+                    
+                    
+                    self.numOfUser = number
+                })
+                
+            })
+            
+        }
         
+       
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -138,6 +163,10 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
 
         // Do any additional setup after loading the view.
     }
+    
+    deinit {
+        ref.removeAllObservers()
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -145,15 +174,7 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
         collectionView.delegate = self
         collectionView.dataSource = self
 
-        let acRef = ref.child("pi01/acquaintance/list")
-        acRefHandle = acRef.observe(.value, with: { (snapshot) in
-            let data = snapshot.value as? Dictionary<String, Any>
-           
-            let number = data!["number"] as! Int?
-
-        
-            self.numOfUser = number
-        })
+      
         
         do {
             let imageDataList = try managedObjectContext!.fetch(ImageMetaData.fetchRequest()) as [ImageMetaData]
@@ -234,10 +255,6 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
 
     //In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard newACName != nil else {
-            displayMessage("Please input a name before add photos", "Error")
-            return
-        }
         if (segue.identifier == "passNameSegue") {
             if let destinationVC = segue.destination as? AddCameraViewController {
                 destinationVC.name = newACName
@@ -247,7 +264,6 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
         }
     }
  
-
     // MARK: UICollectionViewDataSource
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
