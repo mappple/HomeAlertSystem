@@ -25,34 +25,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
         let appDelegate = UIApplication.shared.delegate
         appDelegate?.window??.rootViewController = signInPage
-        }
-    
- 
-
-    private let acquaintanceRef = Database.database().reference().child("pi01/acquaintance")
-    private var acquaintanceRefHandle: DatabaseHandle?
-    private var acquaintanceDictionary: [Int: String] = [:]
-    
-    func isStringAnInt(string: String) -> Bool {
-        return Int(string) != nil
-    }
-    
-    private func observeNewAcquaintance()
-    {
-        acquaintanceRefHandle = acquaintanceRef.observe(.childAdded, with: {(snapshot) -> Void in
-            
-            if self.isStringAnInt(string: snapshot.key) == true && Int(snapshot.key) != 0{
-                let data = snapshot.value as! Dictionary<String, Any>
-                if let name = data["name"] as! String?, let index = snapshot.key as String?{
-                    self.acquaintanceDictionary[Int(index)!] = name
-                    self.acquaintanceTableView.reloadData()
-                } else {
-                    print("Error for data reference observer")
-                }
-            }
-        })
-        
-        
     }
     
     @IBOutlet weak var acquaintanceTableView: UITableView!
@@ -84,15 +56,25 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         acquaintanceTableView.dataSource = self
         
         //Get the raspberryPiName based on the current user id
-        Database.database().reference().child("users").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            let raspberryPiName = value?["\(Auth.auth().currentUser?.uid)"] as? String ?? ""
+        let uid = Auth.auth().currentUser?.uid
+        Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
             
-        }) { (error) in
-            print(error.localizedDescription)
-        }
+              //  let value = snapshot.value as! String
+              //  print(value)
+            
+            }, withCancel: nil)
+            // Get user value
         
+                
+                
+                //let raspberryPiName = value["\(Auth.auth().currentUser?.uid)"] as? String ?? ""
+                
+            
+                
+            
+            
+        
+        print ("123456\(raspberryPiName)")
         //Configure observer for the raspberryPiName if the raspberryPiName exists
         if let raspberryPiName = raspberryPiName{
             
