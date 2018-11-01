@@ -29,7 +29,7 @@ class SettingCell: UICollectionViewCell {
     }
     
     let nameLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 160, y: 0, width: 80, height: 40))
+        let label = UILabel(frame: CGRect(x: 40, y: 0, width: 80, height: 40))
         label.text = "Setting"
         label.textColor = UIColor.black
         

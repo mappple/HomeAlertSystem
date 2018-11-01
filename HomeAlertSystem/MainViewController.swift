@@ -53,16 +53,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     @IBOutlet weak var pirLabel: UILabel!
-    @IBAction func signOutButtonTapped(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-        } catch{
-            
-        }
-        let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
-        let appDelegate = UIApplication.shared.delegate
-        appDelegate?.window??.rootViewController = signInPage
-    }
     
     private var ref = Database.database().reference()
     private var acquaintanceRefHandle: DatabaseHandle?
