@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-//import RSKImageCropper
 
 class AddCameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -146,30 +145,5 @@ class AddCameraViewController: UIViewController, UIImagePickerControllerDelegate
         self.present(alertController, animated: true, completion: nil)
     }
     
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//        let image = (info[UIImagePickerController.InfoKey.originalImage] as? UIImage)!
-//        picker.dismiss(animated: false) {
-//
-//            var imageCropVC : RSKImageCropViewController!
-//
-//            imageCropVC = RSKImageCropViewController(image: image, cropMode: RSKImageCropMode.circle)
-//
-//            imageCropVC.delegate = self as? RSKImageCropViewControllerDelegate
-//
-//            self.navigationController?.pushViewController(imageCropVC, animated: true)
-//
-//
-//        }
-//    }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
