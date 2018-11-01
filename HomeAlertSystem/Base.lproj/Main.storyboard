@@ -133,7 +133,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cSI-4M-2f8"/>
                     </view>
-                    <navigationItem key="navigationItem" id="qRj-ZE-oQA"/>
+                    <navigationItem key="navigationItem" id="qRj-ZE-oQA">
+                        <barButtonItem key="rightBarButtonItem" title="setting" image="setting" id="LYN-dN-c7k"/>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="acquaintanceTableView" destination="xv5-e1-7mj" id="Ny9-Up-iWb"/>
@@ -142,6 +144,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a6X-qb-6js" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1175.2" y="-2023.5382308845578"/>
+        </scene>
+        <!--About Page View Controller-->
+        <scene sceneID="l2U-Rw-5zi">
+            <objects>
+                <viewController storyboardIdentifier="AboutPageViewController" id="M0c-Wa-Wvj" customClass="AboutPageViewController" customModule="HomeAlertSystem" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wt8-YT-yY6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVb-DD-4SK">
+                                <rect key="frame" x="16" y="107" width="343" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="GbI-Lw-a81"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B6w-PK-hMT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-255.19999999999999" y="-2203.4482758620693"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="scI-jW-D6r">
@@ -369,7 +395,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8kB-Fz-m75" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2114.4000000000001" y="-657.12143928035982"/>
+            <point key="canvasLocation" x="-2135" y="-583"/>
         </scene>
         <!--Add to White List-->
         <scene sceneID="KnE-tW-Zee">
@@ -523,8 +549,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="details" width="45" height="45"/>
-        <image name="home" width="45" height="45"/>
-        <image name="plus" width="45" height="45"/>
+        <image name="details" width="30" height="30"/>
+        <image name="home" width="30" height="30"/>
+        <image name="plus" width="30" height="30"/>
+        <image name="setting" width="50" height="50"/>
     </resources>
 </document>

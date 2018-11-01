@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		13149731322E49F55A038FD3 /* Pods_HomeAlertSystemTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9826656EE0FABCE85C3FCCA2 /* Pods_HomeAlertSystemTests.framework */; };
+		3A6009D2218B11D20026F5EA /* SettingsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6009D1218B11D20026F5EA /* SettingsLauncher.swift */; };
+		3A6009D4218B2C330026F5EA /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6009D3218B2C330026F5EA /* SettingCell.swift */; };
+		3A6009D6218B49300026F5EA /* AboutPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6009D5218B49300026F5EA /* AboutPageViewController.swift */; };
 		504A57DC21888A220055C18E /* VisitHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504A57DB21888A1B0055C18E /* VisitHistoryTableViewController.swift */; };
 		504A57DE21888A2C0055C18E /* Visit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504A57DD21888A2C0055C18E /* Visit.swift */; };
 		504A57E021888B680055C18E /* TableElementParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504A57DF21888B680055C18E /* TableElementParam.swift */; };
@@ -56,6 +59,9 @@
 		1F0084DF9E6D59B003A6A98B /* Pods-HomeAlertSystemTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeAlertSystemTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomeAlertSystemTests/Pods-HomeAlertSystemTests.release.xcconfig"; sourceTree = "<group>"; };
 		24AB9A6D07169074609186AC /* Pods-HomeAlertSystemUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeAlertSystemUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomeAlertSystemUITests/Pods-HomeAlertSystemUITests.release.xcconfig"; sourceTree = "<group>"; };
 		310D6116C0B2339CCBAF4418 /* Pods_HomeAlertSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeAlertSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A6009D1218B11D20026F5EA /* SettingsLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLauncher.swift; sourceTree = "<group>"; };
+		3A6009D3218B2C330026F5EA /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		3A6009D5218B49300026F5EA /* AboutPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPageViewController.swift; sourceTree = "<group>"; };
 		504A57DB21888A1B0055C18E /* VisitHistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitHistoryTableViewController.swift; sourceTree = "<group>"; };
 		504A57DD21888A2C0055C18E /* Visit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Visit.swift; sourceTree = "<group>"; };
 		504A57DF21888B680055C18E /* TableElementParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableElementParam.swift; sourceTree = "<group>"; };
@@ -151,9 +157,12 @@
 				505FDC7921802CD900E276DB /* GoogleService-Info.plist */,
 				50686EA12170837300E97676 /* AppDelegate.swift */,
 				50686EA72170837300E97676 /* Main.storyboard */,
+				3A6009D5218B49300026F5EA /* AboutPageViewController.swift */,
 				50686EAA2170837400E97676 /* Assets.xcassets */,
 				50686EAF2170837500E97676 /* Info.plist */,
 				505FDC6D217ECFEF00E276DB /* MainViewController.swift */,
+				3A6009D1218B11D20026F5EA /* SettingsLauncher.swift */,
+				3A6009D3218B2C330026F5EA /* SettingCell.swift */,
 				505FDC72217ED4CA00E276DB /* HomeAlertSystem.xcdatamodeld */,
 				505FDC75217ED4DF00E276DB /* Launch Screen.storyboard */,
 				505FDC77217EEFFE00E276DB /* BaseTabBarController.swift */,
@@ -447,15 +456,18 @@
 				504A57DE21888A2C0055C18E /* Visit.swift in Sources */,
 				505FDC8E21831E5100E276DB /* ImageCollectionViewCell.swift in Sources */,
 				504A57E021888B680055C18E /* TableElementParam.swift in Sources */,
+				3A6009D6218B49300026F5EA /* AboutPageViewController.swift in Sources */,
 				505FDC78217EEFFE00E276DB /* BaseTabBarController.swift in Sources */,
 				50686EA22170837300E97676 /* AppDelegate.swift in Sources */,
 				504A57DC21888A220055C18E /* VisitHistoryTableViewController.swift in Sources */,
 				505FDC6E217ECFEF00E276DB /* MainViewController.swift in Sources */,
 				505FDC8C218319F900E276DB /* ImageMetaData+CoreDataProperties.swift in Sources */,
 				505FDC7C21802D2400E276DB /* SignInViewController.swift in Sources */,
+				3A6009D4218B2C330026F5EA /* SettingCell.swift in Sources */,
 				505FDC8B218319F900E276DB /* ImageMetaData+CoreDataClass.swift in Sources */,
 				505FDC74217ED4CA00E276DB /* HomeAlertSystem.xcdatamodeld in Sources */,
 				505FDC822182FA8800E276DB /* AddGalleryCollectionViewController.swift in Sources */,
+				3A6009D2218B11D20026F5EA /* SettingsLauncher.swift in Sources */,
 				505FDC842182FC3500E276DB /* AddCameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

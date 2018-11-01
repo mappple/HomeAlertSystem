@@ -16,6 +16,43 @@ import FirebaseStorage
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     
+    func setUpSettingButton(){
+        let moreButton = UIBarButtonItem(image: UIImage(named: "setting"), style: .plain, target: self, action: #selector(handleMore(sender: )))
+        navigationItem.rightBarButtonItem = moreButton
+    }
+    
+    let settingsLauncher = SettingsLauncher()
+    
+    
+    
+    @objc func handleMore(sender: UIBarButtonItem){
+        settingsLauncher.mainViewController = self
+        settingsLauncher.showSettings(sender: navigationItem.rightBarButtonItem!)
+        
+        
+    }
+    
+    func showControllerForSettingsLauncher(){
+        
+        let aboutPageViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AboutPageViewController") as! AboutPageViewController
+        
+        navigationController?.pushViewController(aboutPageViewController, animated: true)
+    }
+    
+    func signOutForSettingLauncher(){
+        
+        do {
+            try Auth.auth().signOut()
+        } catch{
+            
+        }
+        let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+        let appDelegate = UIApplication.shared.delegate
+        appDelegate?.window??.rootViewController = signInPage
+        
+    }
+    
+    
     @IBAction func signOutButtonTapped(_ sender: Any) {
         do {
             try Auth.auth().signOut()
@@ -144,6 +181,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         print("pi name::::::::::::::::::")
         print (getPiName(userId: uid))
+        
+        setUpSettingButton()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -168,20 +208,31 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func getPiName(userId: String?) -> String?{
         
         var piName: String?
-        if (userId != nil){
-            Database.database().reference().child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+        
+        
+           
+            
+            if (userId != nil){
+                Database.database().reference().child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+                    
+                    let pi = snapshot.value as? [String:Any]
+                    //let pi = snapshot.value as? [String:Any]
+                    piName = pi![userId!] as? String
+                    //piName = pi
+                }){ (error) in
+                    print("ERROR:::::::")
+                    print(error.localizedDescription)
+                }
                 
-                let pi = snapshot.value as? [String:Any]
-                //let pi = snapshot.value as? [String:Any]
-                piName = pi![userId!] as? String
-                //piName = pi
-            }){ (error) in
-                print("ERROR:::::::")
-                print(error.localizedDescription)
             }
-            return piName
-        }
-        return nil
+            
+        
+        
+        print(":::::::::::::::::::")
+        print(piName)
+        print("::::::::::::::::::")
+        
+        return piName
         
     }
     
