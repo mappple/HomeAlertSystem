@@ -90,8 +90,7 @@ class VisitHistoryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "History"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        self.setBackgroundImage("night-stars-wallpaper-1", contentMode: .scaleAspectFill)
         tabVC = self.tabBarController as? BaseTabBarController
         if (uid != nil){
             ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
