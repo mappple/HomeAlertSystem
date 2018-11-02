@@ -12,7 +12,6 @@ import FirebaseStorage
 import SDWebImage
 import UserNotifications
 
-
 class VisitTableViewCell: UITableViewCell {
     
     @IBOutlet weak var visitorNameLabel: UILabel!
@@ -20,16 +19,13 @@ class VisitTableViewCell: UITableViewCell {
     @IBOutlet weak var visitorImage: UIImageView!
     
     override func prepareForReuse() {
-      //  visitorImage.sd_cancelCurrentImageLoad()
-      //  visitorImage.image = nil
-        visitorNameLabel.textColor = UIColor.black
+        visitorNameLabel.textColor = UIColor.white
     }
     
 }
 
 class VisitHistoryTableViewController: UITableViewController {
 
-    //private let dataRef = Database.database().reference().child("pi01/data")
     private let ref = Database.database().reference()
     private let storage = Storage.storage()
     private var dataRefHandle: DatabaseHandle?
@@ -43,54 +39,39 @@ class VisitHistoryTableViewController: UITableViewController {
         dataRefHandle = ref.child("\(piName)/data").observe(.childAdded, with: {(snapshot) -> Void in
             let data = snapshot.value as! Dictionary<String, Any>
             if let id = data["id"] as! String?, let strTime = data["time"] as! String?, let intTime = Int(strTime), let strUrl = data["url"] as! String?, let url = URL(string: strUrl){
-                //sectionMark is used to split data into different groups for different days
-               //self.sectionMark = Int(Double(intTime) / 1000.0 / 3600 / 24)
                 let time = Date(timeIntervalSince1970: (Double(intTime) / 1000.0))
-               // let data = try? Data(contentsOf: url)
-                
-                //let imageDefault = UIImage(named: "blank")
-                //let image = UIImage(data: data!)
                 if id == "0" {
                     self.setUserNotification()
                 }
-    
-                let df = DateFormatter()
-                df.dateFormat = "dd-MM-yyyy"
-               // let day = df.string(from: time)
                 let day = Int(Double(intTime) / 1000.0 / 3600 / 24)
-                //self.visitList.append(Visit(id: id, time: time, url: url))
                 if self.sections.index(forKey: day) == nil {
                     self.sections[day] = [Visit(id: id, time: time, url: url)]
                 } else {
                     self.sections[day]!.append(Visit(id: id, time: time, url: url))
                 }
-               
+                self.sections[day] = self.sections[day]!.sorted(by: { $0.time > $1.time })
                 self.sortedSections = self.sections.keys.sorted(by: >)
 
                 self.tableView.reloadData()
             } else {
                 print("Error for data reference observer")
             }
-            
-            
         })
-        
-        
     }
     
-    /*
-     Remove all observers when deinitializing
-     */
+    // Remove all observers when deinitializing
     deinit {
         if let dataHandle = dataRefHandle {
             ref.removeObserver(withHandle: dataHandle)
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setBackgroundImage("night-stars-wallpaper-1", contentMode: .scaleAspectFill)
+        let backgroundImage = UIImage(named: "night-stars-wallpaper-1")
+        let imageView = UIImageView(image: backgroundImage)
+        self.tableView.backgroundView = imageView
+        self.tableView.backgroundView?.contentMode = .scaleAspectFill
         tabVC = self.tabBarController as? BaseTabBarController
         if (uid != nil){
             ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -99,16 +80,10 @@ class VisitHistoryTableViewController: UITableViewController {
                 self.piName = (value![self.uid!] as? String)!
                 self.observeNewVisit(piName: self.piName)
             })
-            
         }
-//        if tabVC?.piName != nil {
-//            piName = (tabVC?.piName)!
-//        }
-        //observeNewVisit(piName: piName)
-       
-        
     }
     
+    // Set notificaiton center content
     func setUserNotification() {
         let content = UNMutableNotificationContent()
         content.title = "ALERT!"
@@ -121,21 +96,28 @@ class VisitHistoryTableViewController: UITableViewController {
     }
     
 
-    // MARK: - Table view data source
-
+    //Return the number days which contains alert data
     override func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
     
+    //Return the number of alert data in each day
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[sortedSections[section]]!.count
     }
     
+    //Return the section name of time in Australia format
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let time = Date(timeIntervalSince1970: Double(sortedSections[section] * 24 * 3600))
         let df = DateFormatter()
         df.dateFormat = "dd-MM-yyyy"
         return df.string(from: time)
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerView = view as? UITableViewHeaderFooterView {
+            headerView.textLabel?.textColor = .white
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -163,68 +145,8 @@ class VisitHistoryTableViewController: UITableViewController {
             cell.visitorImage.image?.draw(in: imageRect)
             cell.visitorImage.image = UIGraphicsGetImageFromCurrentImageContext()!;
             UIGraphicsEndImageContext();
-            //tableView.reloadRows(at: [indexPath], with: .fade)
-            
         }
-//        cell.visitorImage.sd_setImage(with: visitor.url) { (image:UIImage?, error:Error?, cacheType: SDImageCacheType, url:URL?) in
-//            let itemSize = CGSize.init(width: 320, height: 180)
-//            UIGraphicsBeginImageContextWithOptions(itemSize, false, UIScreen.main.scale);
-//            let imageRect = CGRect.init(origin: CGPoint.zero, size: itemSize)
-//            cell.visitorImage.image?.draw(in: imageRect)
-//            cell.visitorImage.image = UIGraphicsGetImageFromCurrentImageContext()!;
-//            UIGraphicsEndImageContext();
-//            //tableView.reloadRows(at: [indexPath], with: .fade)
-//
-//        }
-        
         return cell
     }
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 

@@ -74,7 +74,9 @@ class AboutPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.setBackgroundImage("night-stars-wallpaper-1", contentMode: .scaleAspectFill)
+        self.navigationItem.title = "About"
+        self.navigationItem.hidesBackButton = true
         loadStudentNameTitle()
         loadUnitCodeTitle()
         loadReferenceTitle()

@@ -155,6 +155,7 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
             
         }
         
+        
        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -228,6 +229,9 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
         }
     }
     
+    
+
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ImageCollectionViewCell
         
@@ -281,6 +285,10 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
         let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil ))
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 
     // MARK: UICollectionViewDelegate
