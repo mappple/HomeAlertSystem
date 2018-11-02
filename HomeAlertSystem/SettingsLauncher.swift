@@ -71,7 +71,7 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
             
             
             
-            collectionView.frame = CGRect(x: 0 as CGFloat, y: 90, width: window.frame.width, height: height)
+            collectionView.frame = CGRect(x: 0 as CGFloat, y: 90, width: 180, height: height)
             
             blackView.frame = window.frame
             blackView.alpha = 0

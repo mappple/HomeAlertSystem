@@ -57,7 +57,9 @@ class SignInViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     
     override func didReceiveMemoryWarning() {
@@ -87,3 +89,22 @@ class SignInViewController: UIViewController {
     
 }
 
+extension UITextField{
+    @IBInspectable var placeHolderColor: UIColor? {
+        get {
+            return self.placeHolderColor
+        }
+        set {
+            self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "", attributes:[NSAttributedString.Key.foregroundColor: newValue!])
+        }
+    }
+}
+
+extension UIViewController {
+    func setBackgroundImage(_ imageName: String, contentMode: UIView.ContentMode) {
+        let backgroundImage = UIImageView(frame: self.view.bounds)
+        backgroundImage.image = UIImage(named: imageName)
+        backgroundImage.contentMode = contentMode
+        self.view.insertSubview(backgroundImage, at: 0)
+    }
+}

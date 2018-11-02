@@ -83,6 +83,7 @@ class AddCameraViewController: UIViewController, UIImagePickerControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setBackgroundImage("night-stars-wallpaper-1", contentMode: .scaleAspectFill)
         appDelegate = UIApplication.shared.delegate as? AppDelegate
         managedObjectContext = (appDelegate?.persistentContainer.viewContext)
         imagePicker = UIImagePickerController()

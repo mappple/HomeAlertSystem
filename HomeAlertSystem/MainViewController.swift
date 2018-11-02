@@ -17,7 +17,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func setUpSettingButton(){
         let moreButton = UIBarButtonItem(image: UIImage(named: "setting"), style: .plain, target: self, action: #selector(handleMore(sender: )))
-        navigationItem.rightBarButtonItem = moreButton
+        navigationItem.leftBarButtonItem = moreButton
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.white
     }
     
     let settingsLauncher = SettingsLauncher()
@@ -26,7 +27,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @objc func handleMore(sender: UIBarButtonItem){
         settingsLauncher.mainViewController = self
-        settingsLauncher.showSettings(sender: navigationItem.rightBarButtonItem!)
+        settingsLauncher.showSettings(sender: navigationItem.leftBarButtonItem!)
         
         
     }
@@ -125,11 +126,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return 1
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "WHITELIST"
-    }
-    
-    //let aiv = UIActivityIndicatorView(style: .whiteLarge)
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
@@ -148,6 +144,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setBackgroundImage("night-stars-wallpaper-1", contentMode: .scaleAspectFill)
         // Register the table view cell class and its reuse id
         self.acquaintanceTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         acquaintanceTableView.delegate = self
@@ -171,13 +168,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         setUpSettingButton()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-       
-      
-      
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -198,83 +188,5 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
 
     
-//    func getPiName(userId: String?) -> String?{
-//        var piName: String?
-//        if (userId != nil){
-//            ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
-//                let pi = snapshot.value as? [String:Any]
-//                //let pi = snapshot.value as? [String:Any]
-//                piName = pi![userId!] as? String
-//                self.currentPi = piName!
-//                //piName = pi
-//            })
-//
-//            return piName
-//        }
-//        return nil
-//
-//    }
-    
 
-    //    func setupPlayer() {
-    //
-    //
-    //
-    //
-    //        //let videoURL = URL(string: "http://172.20.10.9:8080/camera/livestream.m3u8")
-    //        let videoURL = URL(string: "http://192.168.2.145:8080/camera/livestream.m3u8")
-    //        let player = AVPlayer(url: videoURL!)
-    //        let playerLayer = AVPlayerLayer(player: player)
-    //        let height = self.view.frame.width * 9 / 16
-    //        let playerFrame = CGRect(x: 0, y: 64, width: self.view.frame.width, height: height)
-    //        playerLayer.frame = playerFrame
-    //
-    //        let videoView = UIView(frame: playerFrame)
-    //
-    //        videoView.backgroundColor = UIColor.black
-    //        videoView.layer.addSublayer(playerLayer)
-    //
-    //        self.view.addSubview(videoView)
-    //        player.play()
-    //
-    //        player.addObserver(self, forKeyPath: "currentItem.loadedTimeRanges", options: .new, context: nil)
-    //
-    //        let controlsContainerView: UIView = {
-    //            let view = UIView()
-    //            //view.backgroundColor = UIColor(white: 1, alpha: 0.5)
-    //            return view
-    //        }()
-    //
-    //
-    //        aiv.translatesAutoresizingMaskIntoConstraints = false
-    //        aiv.startAnimating()
-    //        controlsContainerView.frame = playerFrame
-    //        self.view.addSubview(controlsContainerView)
-    //
-    //        controlsContainerView.addSubview(aiv)
-    //        aiv.centerXAnchor.constraint(equalTo: controlsContainerView.centerXAnchor).isActive = true
-    //        aiv.centerYAnchor.constraint(equalTo: controlsContainerView.centerYAnchor).isActive = true
-    //
-    //
-    //
-    //    }
-    
-    
-    //    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-    //        if keyPath == "currentItem.loadedTimeRanges" {
-    //            aiv.stopAnimating()
-    //
-    //        }
-    //    }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

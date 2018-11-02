@@ -126,6 +126,7 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setBackgroundImage("night-stars-wallpaper-1", contentMode: .scaleAspectFill)
         collectionView.delegate = self
         appDelegate = UIApplication.shared.delegate as? AppDelegate
         managedObjectContext = (appDelegate?.persistentContainer.viewContext)
