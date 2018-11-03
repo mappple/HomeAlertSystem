@@ -144,10 +144,7 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
                 let acRef = self.ref.child("\(self.piName)/acquaintance/list")
                 self.acRefHandle = acRef.observe(.value, with: { (snapshot) in
                     let data = snapshot.value as? Dictionary<String, Any>
-                    
                     let number = data!["number"] as! Int?
-                    
-                    
                     self.numOfUser = number
                 })
                 
