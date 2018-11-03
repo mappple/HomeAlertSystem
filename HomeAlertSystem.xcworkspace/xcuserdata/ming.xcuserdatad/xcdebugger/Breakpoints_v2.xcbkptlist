@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HomeAlertSystem/MainViewController.swift"
-            timestampString = "562844906.97208"
+            timestampString = "562867137.271404"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HomeAlertSystem/MainViewController.swift"
-            timestampString = "562844906.972522"
+            timestampString = "562867137.271462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "numberOfSections(in:)"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "tableView(_:commit:forRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,43 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HomeAlertSystem/MainViewController.swift"
-            timestampString = "562844906.972807"
+            timestampString = "562867137.271503"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HomeAlertSystem/MainViewController.swift"
-            timestampString = "562844906.973073"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HomeAlertSystem/MainViewController.swift"
-            timestampString = "562844906.973335"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "MainViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -90,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HomeAlertSystem/MainViewController.swift"
-            timestampString = "562844906.973598"
+            timestampString = "562867137.271558"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "MainViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -106,11 +74,59 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HomeAlertSystem/MainViewController.swift"
-            timestampString = "562844906.973858"
+            timestampString = "562867137.271593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "deinit"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HomeAlertSystem/MainViewController.swift"
+            timestampString = "562867137.271629"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "deinit"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HomeAlertSystem/MainViewController.swift"
+            timestampString = "562867137.271663"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "deinit"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HomeAlertSystem/MainViewController.swift"
+            timestampString = "562867137.271698"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "MainViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -122,28 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HomeAlertSystem/MainViewController.swift"
-            timestampString = "562844906.974118"
+            timestampString = "562867137.271737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "observePIR(piName:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HomeAlertSystem/MainViewController.swift"
-            timestampString = "562844906.97438"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "observeNewAcquaintance(piName:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -186,12 +186,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HomeAlertSystem/MainViewController.swift"
-            timestampString = "562844906.974642"
+            timestampString = "562867137.271772"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "viewWillAppear(_:)"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -207,8 +207,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
             endingLineNumber = "25"
-            landmarkName = "getPiName(userId:)"
-            landmarkType = "7">
+            landmarkName = "BaseTabBarController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -223,14 +223,14 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
             endingLineNumber = "31"
-            landmarkName = "getPiName(userId:)"
-            landmarkType = "7">
+            landmarkName = "BaseTabBarController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HomeAlertSystem/BaseTabBarController.swift"
@@ -239,8 +239,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
             endingLineNumber = "30"
-            landmarkName = "getPiName(userId:)"
-            landmarkType = "7">
+            landmarkName = "BaseTabBarController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -255,8 +255,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
             endingLineNumber = "32"
-            landmarkName = "getPiName(userId:)"
-            landmarkType = "7">
+            landmarkName = "BaseTabBarController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -271,8 +271,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
             endingLineNumber = "34"
-            landmarkName = "getPiName(userId:)"
-            landmarkType = "7">
+            landmarkName = "BaseTabBarController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -287,8 +287,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "37"
             endingLineNumber = "37"
-            landmarkName = "getPiName(userId:)"
-            landmarkType = "7">
+            landmarkName = "BaseTabBarController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -303,8 +303,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
             endingLineNumber = "35"
-            landmarkName = "getPiName(userId:)"
-            landmarkType = "7">
+            landmarkName = "BaseTabBarController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -314,27 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HomeAlertSystem/MainViewController.swift"
-            timestampString = "562844906.974981"
+            timestampString = "562867137.27189"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HomeAlertSystem/MainViewController.swift"
-            timestampString = "562844906.975255"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "MainViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -346,13 +330,25 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HomeAlertSystem/MainViewController.swift"
-            timestampString = "562844906.975522"
+            timestampString = "562867137.271927"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
-            landmarkName = "MainViewController"
-            landmarkType = "3">
+            startingLineNumber = "211"
+            endingLineNumber = "211">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HomeAlertSystem/MainViewController.swift"
+            timestampString = "562867137.271963"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "211"
+            endingLineNumber = "211">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -362,13 +358,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HomeAlertSystem/SettingsLauncher.swift"
-            timestampString = "562852912.710259"
+            timestampString = "562867137.272001"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "SettingsLauncher"
-            landmarkType = "3">
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "unknown"
+            landmarkType = "0">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -410,13 +406,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HomeAlertSystem/SettingsLauncher.swift"
-            timestampString = "562852912.710816"
+            timestampString = "562867137.272338"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
-            landmarkType = "7">
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

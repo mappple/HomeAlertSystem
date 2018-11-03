@@ -29,6 +29,9 @@ class SignUpViewController: UIViewController {
         
     }
     
+    /*
+     To sign up the user to the preferred raspberry pi when sign up button is tapped
+     */
     @IBAction func signUpConfirmButtonTapped(_ sender: Any) {
         
         guard let email = userEmailTextField.text else {
@@ -81,12 +84,18 @@ class SignUpViewController: UIViewController {
         
     }
     
+    /*
+     To display message given message data
+     */
     func displayErrorMessage(_ errorMessage: String){
         let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle: UIAlertController.Style.alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
         self.present(alertController,animated: true, completion: nil)
     }
     
+    /*
+     To load the sign up page
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         

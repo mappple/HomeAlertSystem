@@ -14,7 +14,7 @@ import FirebaseStorage
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
-    
+    //Setting up the right bar button on the navigation bar to represent setting button
     func setUpSettingButton(){
         let moreButton = UIBarButtonItem(image: UIImage(named: "setting"), style: .plain, target: self, action: #selector(handleMore(sender: )))
         navigationItem.leftBarButtonItem = moreButton
@@ -24,7 +24,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     let settingsLauncher = SettingsLauncher()
     
     
-    
+    //To present a drop down setting menu when setting button is tapped
     @objc func handleMore(sender: UIBarButtonItem){
         settingsLauncher.mainViewController = self
         settingsLauncher.showSettings(sender: navigationItem.leftBarButtonItem!)
@@ -32,6 +32,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    //To present AboutPageViewController
     func showControllerForSettingsLauncher(){
         
         let aboutPageViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AboutPageViewController") as! AboutPageViewController
@@ -39,6 +40,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationController?.pushViewController(aboutPageViewController, animated: true)
     }
     
+    //To sign out the application when signOut button on the drop down setting menu is tapped
     func signOutForSettingLauncher(){
         
         do {
@@ -63,10 +65,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var piName = ""
     var tabVC: BaseTabBarController?
     @IBOutlet weak var acquaintanceTableView: UITableView!
+    
+    //To convert string value to integer value
     func isStringAnInt(string: String) -> Bool {
         return Int(string) != nil
     }
     
+    //Configure the observer to listen to the acquaintance branch in firebase
     private func observeNewAcquaintance(piName: String){
         if piName != ""{
             acquaintanceRefHandle = ref.child("\(piName)/acquaintance").observe(.childAdded, with: {(snapshot) -> Void in
@@ -103,6 +108,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
+    
+    
     /*
      Remove all observers when deinitializing
      */
@@ -110,18 +117,26 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         ref.removeAllObservers()
     }
     
+    /*
+     To set the number of table rows in each section
+     */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return acquaintanceDictionary.count - 1
         
     }
     
-    
+    /*
+     To show acquaintance names in table cells
+     */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "acquaintanceCell", for: indexPath)
         cell.textLabel?.text = acquaintanceDictionary[indexPath.row + 1]
         return cell
     }
     
+    /*
+     To set the number of sections in the table view
+     */
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -142,6 +157,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    /*
+     Setting the background image, registering the table cell, setting delegates, executing all observers to fetch all necessary data in firebase, and starting up the setting button
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setBackgroundImage("night-stars-wallpaper-1", contentMode: .scaleAspectFill)

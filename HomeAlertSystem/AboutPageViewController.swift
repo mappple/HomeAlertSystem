@@ -30,34 +30,49 @@ class AboutPageViewController: UIViewController {
     
     
     
-    
+    /*
+     To set student name title
+     */
     func loadStudentNameTitle(){
         studentNameTitle.text = "Student Name:"
         
     }
     
+    /*
+     To set unit code title
+     */
     func loadUnitCodeTitle(){
         unitCodeTitle.text = "Unit Code:"
     }
+    
+    /*
+     To set reference title
+     */
     func loadReferenceTitle(){
         referenceTitle.text = "Reference:"
     }
     
-    
+    /*
+     To set student name text view
+     */
     func loadTextViewForStudentName(){
         
         textViewForStudentName.text = "Weijia Tu \n Ming Yang"
         textViewForStudentName.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.subheadline)
     }
     
-    
+    /*
+     To set unit code text view
+     */
     func loadTextViewForUnitCode(){
         textViewForUnitCode.text = "FIT5140"
         
         
     }
     
-    
+    /*
+     To set reference text view
+     */
     func loadTextViewForReference(){
         
         let ref01 = "https://www.youtube.com/watch?v=2kwCfFG5fDA"
@@ -71,7 +86,9 @@ class AboutPageViewController: UIViewController {
         
     }
     
-    
+    /*
+     To load the about page
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setBackgroundImage("night-stars-wallpaper-1", contentMode: .scaleAspectFill)

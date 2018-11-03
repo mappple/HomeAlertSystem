@@ -10,6 +10,9 @@ import Foundation
 import Firebase
 import UIKit
 
+/*
+ The class is to provide necessary information about setting items in the drop down setting menu
+ */
 class Setting: NSObject {
     let name: String
     let imageName: String
@@ -20,12 +23,10 @@ class Setting: NSObject {
     }
 }
 
-
+/*
+ The class is about what will happen when setting button is tapped
+ */
 class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
-    
-    
-    
     
     override init() {
         super.init()
@@ -52,7 +53,9 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
     var mainViewController: MainViewController?
     
     
-    
+    /*
+     To show drop down setting menu with transparent black background
+     */
     @objc func showSettings(sender: UIBarButtonItem){
         if let window = UIApplication.shared.keyWindow {
             
@@ -89,6 +92,9 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
         
     }
     
+    /*
+     To cancel the drop down setting menu when tapping outside the menu
+     */
     @objc func handleDismiss(sender: UITapGestureRecognizer){
         UIView.animate(withDuration: 0.5, animations: {
             self.blackView.alpha = 0
@@ -103,12 +109,16 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
     
     
     
-    
+    /*
+     To set the number of items in the drop down setting menu
+     */
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
     }
     
-    
+    /*
+     To set each setting item cell
+     */
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: settingCellId, for: indexPath) as! SettingCell
         let setting = settings[indexPath.item]
@@ -116,15 +126,19 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
         return cell
     }
     
+    /*
+     To set the size of each setting item cell
+     */
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 50)
     }
     
+    /*
+     To set the actions when each setting item cell is tapped:
+     when the setting item named "About Page" is tapped, go to the About Page;
+     when the setting item named "Sign Out" is tapped, go to sign in page.
+     */
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
-        
-        
         
         
         

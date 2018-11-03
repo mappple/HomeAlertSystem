@@ -17,6 +17,9 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var userPasswordTextField: UITextField!
     
     
+    /*
+     To sign in the user to the home page when sign in button is tapped
+     */
     @IBAction func signInButtonTapped(_ sender: Any) {
         guard let email = userEmailTextField.text else {
             displayErrorMessage("Please enter an email address")
@@ -44,13 +47,19 @@ class SignInViewController: UIViewController {
         }
     }
     
+    
+    /*
+     To go to sign up page when sign up button is tapped
+     */
     @IBAction func signUpButtonTapped(_ sender: Any) {
         let signUpViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
         self.present(signUpViewController,animated: true)
         
     }
     
-    
+    /*
+     To load the sign in page
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,6 +76,9 @@ class SignInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    /*
+     To display message given message data
+     */
     func displayErrorMessage(_ errorMessage: String){
         let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle: UIAlertController.Style.alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))

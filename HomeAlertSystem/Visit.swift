@@ -8,6 +8,9 @@
 
 import UIKit
 
+/*
+ The class is to provide the information about visits
+ */
 class Visit: NSObject {
 
     let id: String
