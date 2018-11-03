@@ -15,8 +15,9 @@ class SignUpViewController: UIViewController {
     
     
     
-    
-    
+
+    let ref = Database.database().reference()
+    var newUserData: String?
     @IBOutlet weak var userEmailTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
     
@@ -34,16 +35,16 @@ class SignUpViewController: UIViewController {
      */
     @IBAction func signUpConfirmButtonTapped(_ sender: Any) {
         
-        guard let email = userEmailTextField.text else {
+        guard let email = userEmailTextField.text?.trimmingCharacters(in: .whitespaces) else {
             displayErrorMessage("Please enter an email address")
             return
         }
-        guard let password = userPasswordTextField.text else {
+        guard let password = userPasswordTextField.text?.trimmingCharacters(in: .whitespaces) else {
             displayErrorMessage("Please enter a password")
             return
         }
         
-        guard let raspberryPiName = raspberryPiNameTextField.text else {
+        guard let raspberryPiName = raspberryPiNameTextField.text?.trimmingCharacters(in: .whitespaces) else {
             displayErrorMessage("Please enter a raspberry pi name")
             return
         }
@@ -53,35 +54,45 @@ class SignUpViewController: UIViewController {
             if error != nil {
                 self.displayErrorMessage(error!.localizedDescription)
             } else {
-                
                 Auth.auth().signIn(withEmail: email, password: password) {(user, error) in
-                    print ("")
                     if error != nil {
                         self.displayErrorMessage(error!.localizedDescription)
                     } else {
-                        
-                        if let userId = user?.user.uid {
-                            
-                            let homePage = self.storyboard?.instantiateViewController(withIdentifier: "BaseTabBarController") as! UITabBarController
-                            let appDelegate = UIApplication.shared.delegate
-                            appDelegate?.window??.rootViewController = homePage
-                            
-                            let userRef = Database.database().reference().child("users/\(userId)")
-                            userRef.setValue("\(raspberryPiName)")
-                            
-                        } else {
-                            
-                            print ("error in creating a new reference for a new user")
-                        }
-                        
-                        
+                        var getPi = false
+                        self.ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                           // let value = snapshot.key as? [String:Any]
+                            for child in snapshot.children {
+                                let key = (child as AnyObject).key as String
+                                if key == raspberryPiName {
+                                    getPi = true
+                                }
+                            }
+                           // self.newUserData = value![raspberryPiName]
+                            if getPi == true {
+                                let userId = user?.user.uid
+                                let homePage = self.storyboard?.instantiateViewController(withIdentifier: "BaseTabBarController") as! UITabBarController
+                                let appDelegate = UIApplication.shared.delegate
+                                appDelegate?.window??.rootViewController = homePage
+                                let userRef = Database.database().reference().child("users/\(userId!)")
+                                userRef.setValue("\(raspberryPiName)")
+                            } else {
+                                let user = Auth.auth().currentUser
+                                user?.delete { error in
+                                    if let error = error {
+                                        // An error happened.
+                                        print(error)
+                                    } else {
+                                        // Account deleted.
+                                        self.displayErrorMessage("Please enter a valid Pi name!")
+                                    }
+                                }
+
+                            }
+                        })
                     }
                 }
-
             }
         }
-        
-        
     }
     
     /*

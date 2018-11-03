@@ -57,8 +57,7 @@ class AboutPageViewController: UIViewController {
      */
     func loadTextViewForStudentName(){
         
-        textViewForStudentName.text = "Weijia Tu \n Ming Yang"
-        textViewForStudentName.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.subheadline)
+        textViewForStudentName.text = "Weijia Tu and Ming Yang"
     }
     
     /*

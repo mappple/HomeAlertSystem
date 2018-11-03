@@ -96,9 +96,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             pirRefHandle = ref.child("\(piName)/pir/pirstate").observe(.value, with: {(snapshot) -> Void in
                     let data = snapshot.value as! Int
                     if data == 0 {
-                        self.pirLabel.text = "These is no abnormal situation."
+                        self.pirLabel.text = "Congratulation! These is no abnormal situation."
+                        self.pirLabel.textColor = UIColor.white
                     } else if data == 1 {
-                        self.pirLabel.text = "Detect an abnormal situation!"
+                        self.pirLabel.text = "Be Careful! PIR sensor detect an abnormal situation!"
+                        self.pirLabel.textColor = UIColor.red
                     }
                     
                     
@@ -173,7 +175,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             //let pi = snapshot.value as? [String:Any]
                 self.piName = (value![self.uid!] as? String)!
                 self.observeNewAcquaintance(piName: self.piName)
-               // self.observePIR(piName: self.piName)
+                self.observePIR(piName: self.piName)
         })
        
         }

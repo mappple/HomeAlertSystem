@@ -43,7 +43,7 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = UIColor.white
+        cv.backgroundColor = UIColor.black
         return cv
     }()
     let settingCellId = "settingCell"
@@ -69,12 +69,12 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
             window.addSubview(collectionView)
             
             //This is the height of collectionView
-            let height: CGFloat = 100
+            let height: CGFloat = 90
             //let y = 90 + height
             
             
             
-            collectionView.frame = CGRect(x: 0 as CGFloat, y: 90, width: 180, height: height)
+            collectionView.frame = CGRect(x: 0 as CGFloat, y: 90, width: 120, height: height)
             
             blackView.frame = window.frame
             blackView.alpha = 0
@@ -130,7 +130,7 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
      To set the size of each setting item cell
      */
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 50)
+        return CGSize(width: collectionView.frame.width, height: 42)
     }
     
     /*

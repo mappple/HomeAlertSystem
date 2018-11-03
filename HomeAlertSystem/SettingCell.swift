@@ -19,8 +19,8 @@ class SettingCell: UICollectionViewCell {
      */
     override var isHighlighted: Bool{
         didSet{
-            backgroundColor = isHighlighted ? UIColor.darkGray : UIColor.white
-            nameLabel.textColor = isHighlighted ? UIColor.white : UIColor.black
+            backgroundColor = isHighlighted ? UIColor.darkGray : UIColor.black
+            nameLabel.textColor = isHighlighted ? UIColor.black : UIColor.white
         }
     }
     
@@ -30,9 +30,9 @@ class SettingCell: UICollectionViewCell {
     var setting: Setting? {
         didSet {
             nameLabel.text = setting?.name
-            if let imageName = setting?.imageName{
-                nameImageView.image = UIImage(named: imageName)
-            }
+            //if let imageName = setting?.imageName{
+            //    nameImageView.image = UIImage(named: imageName)
+            //}
             
         }
     }
@@ -41,13 +41,14 @@ class SettingCell: UICollectionViewCell {
      The label to be presented in the setting item cell
      */
     let nameLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 40, y: 0, width: 80, height: 40))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 120, height: 40))
         label.text = "Setting"
-        label.textColor = UIColor.black
+        label.textColor = UIColor.white
+        label.font = UIFont(name: "Zapfino", size: 12)
         
         
         label.textAlignment = .center
-        label.lineBreakMode = .byWordWrapping
+        label.lineBreakMode = .byClipping
         label.numberOfLines = 0
         return label
     }()
@@ -75,7 +76,7 @@ class SettingCell: UICollectionViewCell {
     func setUpViews(){
         //self.backgroundColor = UIColor.blue
         self.addSubview(self.nameLabel)
-        self.addSubview(self.nameImageView)
+        //self.addSubview(self.nameImageView)
         //addSubview(nameLabel)
 //        let views = ["nameLabel": nameLabel]
 //        let formatStringForH = "H:|-[nameLabel]-|"
