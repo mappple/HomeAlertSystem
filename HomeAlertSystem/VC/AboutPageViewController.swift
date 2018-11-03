@@ -37,7 +37,7 @@ class AboutPageViewController: UIViewController {
     func loadTextViewForStudentName(){
         let author = "Author: Weijia Tu and Ming Yang"
         let unitcode = "Unit Code: FIT5140"
-        let intro = "This application is used to add/delete acquaintance to white list and view history data of the home alert system which is consist of a RaspberryPi with face recognition technique, Firebase and the IOS client."
+        let intro = "This application is used to add and delete acquaintances to white list and view history data of the home alert system which is consist of a RaspberryPi with face recognition technique, Firebase and the IOS client."
         textViewForStudentName.text = author + "\n" + unitcode + "\n" + intro
     }
     

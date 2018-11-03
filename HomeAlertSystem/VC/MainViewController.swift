@@ -60,6 +60,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var tabVC: BaseTabBarController?
     @IBOutlet weak var acquaintanceTableView: UITableView!
     
+    @IBOutlet weak var openButton: SignButton!
+    
+    @IBAction func openButtonAction(_ sender: Any) {
+        let update = ["/\(self.piName)/led": 1]
+        ref.updateChildValues(update)
+    }
     //To convert string value to integer value
     func isStringAnInt(string: String) -> Bool {
         return Int(string) != nil
@@ -161,7 +167,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.observePIR(piName: self.piName)
             })
         }
-        self.acquaintanceTableView.reloadData()
         setUpSettingButton()
     }
     
