@@ -13,7 +13,6 @@ import SDWebImage
 import UserNotifications
 
 class VisitTableViewCell: UITableViewCell {
-    
     @IBOutlet weak var visitorNameLabel: UILabel!
     @IBOutlet weak var visitDateLabel: UILabel!
     @IBOutlet weak var visitorImage: UIImageView!
@@ -21,11 +20,9 @@ class VisitTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         visitorNameLabel.textColor = UIColor.white
     }
-    
 }
 
 class VisitHistoryTableViewController: UITableViewController {
-
     private let ref = Database.database().reference()
     private let storage = Storage.storage()
     private var dataRefHandle: DatabaseHandle?
@@ -73,6 +70,7 @@ class VisitHistoryTableViewController: UITableViewController {
         self.tableView.backgroundView = imageView
         self.tableView.backgroundView?.contentMode = .scaleAspectFill
         tabVC = self.tabBarController as? BaseTabBarController
+        //Get piName first to locate data
         if (uid != nil){
             ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? [String:Any]
@@ -83,7 +81,9 @@ class VisitHistoryTableViewController: UITableViewController {
         }
     }
     
-    // Set notificaiton center content
+    /*
+     Set notificaiton center content
+     */
     func setUserNotification() {
         let content = UNMutableNotificationContent()
         content.title = "ALERT!"
@@ -92,21 +92,24 @@ class VisitHistoryTableViewController: UITableViewController {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let request = UNNotificationRequest(identifier: "cold", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-
     }
     
-
-    //Return the number days which contains alert data
+    /*
+     Return the number days which contains alert data
+    */
     override func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
-    
-    //Return the number of alert data in each day
+    /*
+     Return the number of alert data in each day
+    */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[sortedSections[section]]!.count
     }
     
-    //Return the section name of time in Australia format
+    /*
+     Return the section name of time in Australia format
+    */
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let time = Date(timeIntervalSince1970: Double(sortedSections[section] * 24 * 3600))
         let df = DateFormatter()
@@ -120,6 +123,9 @@ class VisitHistoryTableViewController: UITableViewController {
         }
     }
     
+    /*
+     Configure cell based on different visitor type
+     */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VisitCell", for: indexPath) as! VisitTableViewCell
         let visitSection = sections[sortedSections[indexPath.section]]
@@ -133,11 +139,11 @@ class VisitHistoryTableViewController: UITableViewController {
         } else {
             cell.visitorNameLabel?.text = visitor.id
         }
-        
         let df = DateFormatter()
         df.dateFormat = "HH:mm:ss"
         let dateString = df.string(from: visitor.time)
         cell.visitDateLabel?.text = dateString
+        //Resize image to suit the frame
         cell.visitorImage.sd_setImage(with: visitor.url, placeholderImage: UIImage(named: "loading"), options: SDWebImageOptions.continueInBackground) { (image:UIImage?, error:Error?, cacheType: SDImageCacheType, url:URL?) in
             let itemSize = CGSize.init(width: 320, height: 180)
             UIGraphicsBeginImageContextWithOptions(itemSize, false, UIScreen.main.scale);

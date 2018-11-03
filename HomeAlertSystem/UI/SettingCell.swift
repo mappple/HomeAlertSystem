@@ -29,11 +29,7 @@ class SettingCell: UICollectionViewCell {
      */
     var setting: Setting? {
         didSet {
-            nameLabel.text = setting?.name
-            //if let imageName = setting?.imageName{
-            //    nameImageView.image = UIImage(named: imageName)
-            //}
-            
+            nameLabel.text = setting?.name            
         }
     }
     
@@ -45,8 +41,6 @@ class SettingCell: UICollectionViewCell {
         label.text = "Setting"
         label.textColor = UIColor.white
         label.font = UIFont(name: "Zapfino", size: 12)
-        
-        
         label.textAlignment = .center
         label.lineBreakMode = .byClipping
         label.numberOfLines = 0
@@ -61,7 +55,6 @@ class SettingCell: UICollectionViewCell {
         return imageView
     }()
     
-    
     /*
      Initialization for the setting item cell
      */
@@ -74,22 +67,7 @@ class SettingCell: UICollectionViewCell {
      To set the view of the setting item cell
      */
     func setUpViews(){
-        //self.backgroundColor = UIColor.blue
         self.addSubview(self.nameLabel)
-        //self.addSubview(self.nameImageView)
-        //addSubview(nameLabel)
-//        let views = ["nameLabel": nameLabel]
-//        let formatStringForH = "H:|-[nameLabel]-|"
-//        let formatStringForV = "V:|-[nameLabel]-|"
-//        let constraintsH = NSLayoutConstraint.constraints(withVisualFormat: formatStringForH, options: NSLayoutConstraint.FormatOptions.alignAllCenterY, metrics: nil, views: views)
-//        let constraintsV = NSLayoutConstraint.constraints(withVisualFormat: formatStringForV, options: NSLayoutConstraint.FormatOptions.alignAllCenterX, metrics: nil, views: views)
-//        NSLayoutConstraint.activate(constraintsH)
-//        NSLayoutConstraint.activate(constraintsV)
-        
-//        let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:[view]-(<=0)-[newView(100)]", options: NSLayoutConstraint.FormatOptions.alignAllCenterY, metrics: nil, views: views)
-//        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[view]-(<=0)-[newView(100)]", options: NSLayoutConstraint.FormatOptions.alignAllCenterX, metrics: nil, views: views)
-//        self.addConstraints(horizontalConstraints)
-//        self.addConstraints(verticalConstraints)
     }
     
     /*

@@ -8,14 +8,14 @@
 
 import UIKit
 import Firebase
+import CoreData
 
 
 class SignInViewController: UIViewController {
     
-    
+    var managedObjectContext: NSManagedObjectContext?
     @IBOutlet weak var userEmailTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
-    
     
     /*
      To sign in the user to the home page when sign in button is tapped
@@ -31,22 +31,15 @@ class SignInViewController: UIViewController {
         }
         
         Auth.auth().signIn(withEmail: email, password: password) {(user, error) in
-            //print ("The sign in user id:")
-            //print (user?.user.uid)
             if error != nil {
                 self.displayErrorMessage(error!.localizedDescription)
             } else {
-                
                 let homePage = self.storyboard?.instantiateViewController(withIdentifier: "BaseTabBarController") as! UITabBarController
                 let appDelegate = UIApplication.shared.delegate
                 appDelegate?.window??.rootViewController = homePage
-                
-                
             }
-            
         }
     }
-    
     
     /*
      To go to sign up page when sign up button is tapped
@@ -62,7 +55,7 @@ class SignInViewController: UIViewController {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        cleanCoreData()
         // Do any additional setup after loading the view.
     }
     
@@ -85,19 +78,18 @@ class SignInViewController: UIViewController {
         self.present(alertController,animated: true, completion: nil)
     }
     
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    func cleanCoreData() {
+        // Create Fetch Request
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ImageMetaData")
+        // Create Batch Delete Request
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try managedObjectContext?.execute(batchDeleteRequest)
+        } catch {
+            print("Clean Coredata failed")
+        }
+    }
     
 }
 

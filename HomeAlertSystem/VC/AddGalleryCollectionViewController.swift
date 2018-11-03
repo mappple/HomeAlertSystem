@@ -15,7 +15,7 @@ import FirebaseStorage
 class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
-
+    
     private let reuseIdentifier = "imageCell"
     private let sectionInsets = UIEdgeInsets(top: 50, left: 20, bottom: 50, right: 20)
     private let itemsPerRow: CGFloat = 3
@@ -28,16 +28,14 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
     var numOfUser: Int?
     var tabVC: BaseTabBarController?
     var piName = ""
-    //var tabBar: BaseTabBarController?
     private var ref = Database.database().reference()
-    //private var acRef = Database.database().reference().child("pi01").child("acquaintance")
     private var acRefHandle: DatabaseHandle?
     private var storageRef = Storage.storage().reference()
     
     @IBOutlet weak var confirmButton: UIButton!
+    
     @IBAction func confrimNameAction(_ sender: Any) {
         if nameTextField.text != "" {
-            //tabBar?.nameLabelData = nameTextField.text?.trimmingCharacters(in: .whitespaces)
             newACName = nameTextField.text!.trimmingCharacters(in: .whitespaces)
             nameTextField.isEnabled = false
             confirmButton.isEnabled = false
@@ -48,6 +46,9 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
     }
     
     @IBOutlet weak var submitButton: UIButton!
+    /*
+     Upload all photos to firebase
+     */
     @IBAction func submitDataAction(_ sender: Any) {
      
         guard imageList.count > 1 else {
@@ -80,6 +81,7 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
                     let ACNum = self.numOfUser!
                     let setPhotoNum = ["/\(self.piName)/acquaintance/\(ACNum)/photoNum": self.imageList.count]
                     self.ref.updateChildValues(setPhotoNum)
+                    //Clean coredata after uploading and clean all lists.
                     self.cleanCoreData()
                     self.imageList.removeAll()
                     self.imagePathList.removeAll()
@@ -110,18 +112,12 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
                     }
                 }
             }
-            
-          
             let newACNum = numOfUser! + 1
             let updateACNameList = [
                                     "/\(self.piName)/acquaintance/list/number": newACNum,
                                     "/\(self.piName)/acquaintance/\(newACNum)/name": newACName!] as [String : Any]
-
             ref.updateChildValues(updateACNameList)
-            
         }
-
-        
     }
 
     override func viewDidLoad() {
@@ -130,16 +126,11 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
         collectionView.delegate = self
         appDelegate = UIApplication.shared.delegate as? AppDelegate
         managedObjectContext = (appDelegate?.persistentContainer.viewContext)
-        
         submitButton.isEnabled = false
-//        tabVC = self.tabBarController as? BaseTabBarController
-//        if tabVC?.piName != nil {
-//             piName = (tabVC?.piName)!
-//        }
+        //Get piName to locate data
         if (uid != nil){
             ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? [String:Any]
-                //let pi = snapshot.value as? [String:Any]
                 self.piName = (value![self.uid!] as? String)!
                 let acRef = self.ref.child("\(self.piName)/acquaintance/list")
                 self.acRefHandle = acRef.observe(.value, with: { (snapshot) in
@@ -147,20 +138,8 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
                     let number = data!["number"] as! Int?
                     self.numOfUser = number
                 })
-                
             })
-            
         }
-        
-        
-       
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
     }
     
     deinit {
@@ -169,23 +148,18 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         collectionView.delegate = self
         collectionView.dataSource = self
-
-      
-        
+        //Load photos from coredata
         do {
             let imageDataList = try managedObjectContext!.fetch(ImageMetaData.fetchRequest()) as [ImageMetaData]
             if(imageDataList.count > 0) {
                 for data in imageDataList {
                     let fileName = data.fileName!
-                    
                     if imagePathList.contains(fileName) {
                         print("Image already loadedin. Skipping image")
                         continue
                     }
-                    
                     if let image = loadImageData(fileName: fileName) {
                         self.imageList.append(image)
                         self.imagePathList.append(fileName)
@@ -193,12 +167,14 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
                     }
                 }
             }
-            
         } catch {
             print("Unable to fetch list of parties")
         }
     }
     
+    /*
+     Function to load photos from coredata
+     */
     func loadImageData(fileName: String) -> UIImage? {
         let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         let url = NSURL(fileURLWithPath: path)
@@ -209,7 +185,6 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
             let fileData = fileManager.contents(atPath: filePath)
             image = UIImage(data: fileData!)
         }
-        
         return image
     }
     
@@ -226,12 +201,8 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
         }
     }
     
-    
-
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ImageCollectionViewCell
-        
         cell.backgroundColor = UIColor.lightGray
         cell.imageView.image = imageList[indexPath.row]
         return cell
@@ -269,12 +240,10 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
     // MARK: UICollectionViewDataSource
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return imageList.count
     }
 
@@ -287,37 +256,6 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
 }
 
 

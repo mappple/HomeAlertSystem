@@ -43,15 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             self.window?.rootViewController = homePage
         }
         
-      //  let tabVC: BaseTabBarController = self.window!.rootViewController as! UITabBarController as! BaseTabBarController
-       // let navigationVC: UINavigationController = tabVC.viewControllers![2] as! UINavigationController
-        //let historyVC: VisitHistoryTableViewController = tabVC.viewControllers![2] as! VisitHistoryTableViewController
-       // let galleryVC: AddGalleryViewController = navigationVC.viewControllers[0] as! AddGalleryViewController
-        //let cameraVC: AddCameraViewController = navigationVC.viewControllers[1] as! AddCameraViewController
-       // historyVC.tabVC = tabVC
-        //galleryVC.tabBar = tabVC
-        //cameraVC.tabBar = tabVC
-        
         return true
     }
 

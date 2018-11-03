@@ -126,6 +126,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		503A14C8218D5FC200E45C8A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				505FDC8D21831E5100E276DB /* ImageCollectionViewCell.swift */,
+				3A6009D3218B2C330026F5EA /* SettingCell.swift */,
+				3A6009D1218B11D20026F5EA /* SettingsLauncher.swift */,
+				5057DFE4218C5DFB0014A3B2 /* SignButton.swift */,
+				5057DFE2218C5A770014A3B2 /* SignTextField.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		503A14C9218D601E00E45C8A /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				505FDC832182FC3500E276DB /* AddCameraViewController.swift */,
+				505FDC812182FA8800E276DB /* AddGalleryCollectionViewController.swift */,
+				505FDC77217EEFFE00E276DB /* BaseTabBarController.swift */,
+				505FDC6D217ECFEF00E276DB /* MainViewController.swift */,
+				505FDC7B21802D2400E276DB /* SignInViewController.swift */,
+				505FDC7D21802D4700E276DB /* SignUpViewController.swift */,
+				504A57DB21888A1B0055C18E /* VisitHistoryTableViewController.swift */,
+				3A6009D5218B49300026F5EA /* AboutPageViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
 		50686E952170837300E97676 = {
 			isa = PBXGroup;
 			children = (
@@ -151,29 +178,18 @@
 		50686EA02170837300E97676 /* HomeAlertSystem */ = {
 			isa = PBXGroup;
 			children = (
+				503A14C9218D601E00E45C8A /* VC */,
+				503A14C8218D5FC200E45C8A /* UI */,
 				504A57DD21888A2C0055C18E /* Visit.swift */,
-				504A57DB21888A1B0055C18E /* VisitHistoryTableViewController.swift */,
 				505FDC89218319F900E276DB /* ImageMetaData+CoreDataClass.swift */,
 				505FDC8A218319F900E276DB /* ImageMetaData+CoreDataProperties.swift */,
 				505FDC7921802CD900E276DB /* GoogleService-Info.plist */,
 				50686EA12170837300E97676 /* AppDelegate.swift */,
 				50686EA72170837300E97676 /* Main.storyboard */,
-				5057DFE4218C5DFB0014A3B2 /* SignButton.swift */,
-				3A6009D5218B49300026F5EA /* AboutPageViewController.swift */,
 				50686EAA2170837400E97676 /* Assets.xcassets */,
 				50686EAF2170837500E97676 /* Info.plist */,
-				505FDC6D217ECFEF00E276DB /* MainViewController.swift */,
-				3A6009D1218B11D20026F5EA /* SettingsLauncher.swift */,
-				3A6009D3218B2C330026F5EA /* SettingCell.swift */,
 				505FDC72217ED4CA00E276DB /* HomeAlertSystem.xcdatamodeld */,
 				505FDC75217ED4DF00E276DB /* Launch Screen.storyboard */,
-				505FDC77217EEFFE00E276DB /* BaseTabBarController.swift */,
-				505FDC7B21802D2400E276DB /* SignInViewController.swift */,
-				505FDC7D21802D4700E276DB /* SignUpViewController.swift */,
-				505FDC812182FA8800E276DB /* AddGalleryCollectionViewController.swift */,
-				505FDC832182FC3500E276DB /* AddCameraViewController.swift */,
-				505FDC8D21831E5100E276DB /* ImageCollectionViewCell.swift */,
-				5057DFE2218C5A770014A3B2 /* SignTextField.swift */,
 			);
 			path = HomeAlertSystem;
 			sourceTree = "<group>";

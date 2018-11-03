@@ -154,75 +154,52 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ys6-oh-EgK">
-                                <rect key="frame" x="16" y="20" width="278" height="47.5"/>
-                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nej-jD-1WG">
-                                <rect key="frame" x="21" y="146.5" width="268" height="47.5"/>
+                                <rect key="frame" x="16" y="36" width="288" height="48"/>
                                 <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7L5-9f-fHV">
-                                <rect key="frame" x="21" y="286" width="268" height="47.5"/>
+                                <rect key="frame" x="16" y="286" width="278" height="48"/>
                                 <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIf-CA-W3g">
-                                <rect key="frame" x="16" y="75.5" width="288" height="45"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="tmG-k9-mKP"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="scs-aA-qgy">
-                                <rect key="frame" x="16" y="202" width="288" height="45"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="RUe-00-u4j"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cnI-vX-MiZ">
-                                <rect key="frame" x="16" y="341.5" width="288" height="206.5"/>
+                                <rect key="frame" x="16" y="342" width="288" height="207"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="10"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIf-CA-W3g">
+                                <rect key="frame" x="16" y="92" width="288" height="175"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="175" id="wi4-1e-Sx0"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="Ys6-oh-EgK" firstAttribute="centerX" secondItem="nej-jD-1WG" secondAttribute="centerX" id="4zq-Ao-zli"/>
-                            <constraint firstItem="Ys6-oh-EgK" firstAttribute="leading" secondItem="bIf-CA-W3g" secondAttribute="leading" id="6lo-xX-b0f"/>
-                            <constraint firstItem="GbI-Lw-a81" firstAttribute="trailing" secondItem="bIf-CA-W3g" secondAttribute="trailing" constant="16" id="73m-nM-pHd"/>
-                            <constraint firstItem="nej-jD-1WG" firstAttribute="trailing" secondItem="7L5-9f-fHV" secondAttribute="trailing" id="8Id-Zo-qkI"/>
+                            <constraint firstItem="7L5-9f-fHV" firstAttribute="top" secondItem="bIf-CA-W3g" secondAttribute="bottom" constant="19" id="15D-R9-rCv"/>
                             <constraint firstItem="cnI-vX-MiZ" firstAttribute="leading" secondItem="GbI-Lw-a81" secondAttribute="leading" constant="16" id="Bkr-0R-dDT"/>
-                            <constraint firstItem="scs-aA-qgy" firstAttribute="top" secondItem="nej-jD-1WG" secondAttribute="bottom" constant="8" symbolic="YES" id="CEY-eF-uMs"/>
-                            <constraint firstItem="7L5-9f-fHV" firstAttribute="top" secondItem="scs-aA-qgy" secondAttribute="bottom" constant="39" id="Eus-HD-ano"/>
-                            <constraint firstItem="nej-jD-1WG" firstAttribute="leading" secondItem="GbI-Lw-a81" secondAttribute="leading" constant="21" id="KGx-ex-yKu"/>
-                            <constraint firstItem="cnI-vX-MiZ" firstAttribute="top" secondItem="7L5-9f-fHV" secondAttribute="bottom" constant="8" symbolic="YES" id="LUH-1U-0n7"/>
-                            <constraint firstAttribute="bottom" secondItem="cnI-vX-MiZ" secondAttribute="bottom" constant="20" symbolic="YES" id="SRB-uT-Rkq"/>
-                            <constraint firstItem="bIf-CA-W3g" firstAttribute="top" secondItem="Ys6-oh-EgK" secondAttribute="bottom" constant="8" symbolic="YES" id="Ug6-iF-V7s"/>
-                            <constraint firstItem="nej-jD-1WG" firstAttribute="top" secondItem="bIf-CA-W3g" secondAttribute="bottom" constant="26" id="bu0-Kw-5aj"/>
-                            <constraint firstItem="bIf-CA-W3g" firstAttribute="leading" secondItem="GbI-Lw-a81" secondAttribute="leading" constant="16" id="dnp-Qs-saB"/>
-                            <constraint firstItem="Ys6-oh-EgK" firstAttribute="top" secondItem="GbI-Lw-a81" secondAttribute="top" id="fp1-wq-zJJ"/>
-                            <constraint firstItem="GbI-Lw-a81" firstAttribute="trailing" secondItem="scs-aA-qgy" secondAttribute="trailing" constant="16" id="in2-QF-VhF"/>
+                            <constraint firstItem="bIf-CA-W3g" firstAttribute="leading" secondItem="Ys6-oh-EgK" secondAttribute="leading" id="E1j-TZ-Zic"/>
+                            <constraint firstItem="bIf-CA-W3g" firstAttribute="leading" secondItem="7L5-9f-fHV" secondAttribute="leading" id="EgU-2l-y1U"/>
+                            <constraint firstItem="Ys6-oh-EgK" firstAttribute="leading" secondItem="GbI-Lw-a81" secondAttribute="leading" constant="16" id="HM0-lZ-S4Z"/>
+                            <constraint firstItem="bIf-CA-W3g" firstAttribute="trailing" secondItem="Ys6-oh-EgK" secondAttribute="trailing" id="Inu-oc-KCJ"/>
+                            <constraint firstItem="Ys6-oh-EgK" firstAttribute="top" secondItem="GbI-Lw-a81" secondAttribute="top" constant="16" id="OJm-IW-3XO"/>
+                            <constraint firstItem="GbI-Lw-a81" firstAttribute="trailing" secondItem="7L5-9f-fHV" secondAttribute="trailing" constant="26" id="TSw-3A-6z6"/>
+                            <constraint firstItem="GbI-Lw-a81" firstAttribute="bottom" secondItem="cnI-vX-MiZ" secondAttribute="bottom" constant="19" id="WAg-cN-crn"/>
+                            <constraint firstItem="cnI-vX-MiZ" firstAttribute="top" secondItem="7L5-9f-fHV" secondAttribute="bottom" constant="8" symbolic="YES" id="kRS-vx-Q5h"/>
+                            <constraint firstItem="bIf-CA-W3g" firstAttribute="top" secondItem="Ys6-oh-EgK" secondAttribute="bottom" constant="8" symbolic="YES" id="khJ-Iq-mb7"/>
                             <constraint firstItem="GbI-Lw-a81" firstAttribute="trailing" secondItem="cnI-vX-MiZ" secondAttribute="trailing" constant="16" id="pdh-Xk-MGS"/>
-                            <constraint firstItem="scs-aA-qgy" firstAttribute="leading" secondItem="GbI-Lw-a81" secondAttribute="leading" constant="16" id="q2a-Md-aIa"/>
-                            <constraint firstItem="GbI-Lw-a81" firstAttribute="trailing" secondItem="Ys6-oh-EgK" secondAttribute="trailing" constant="26" id="y09-AT-4XF"/>
-                            <constraint firstItem="nej-jD-1WG" firstAttribute="leading" secondItem="7L5-9f-fHV" secondAttribute="leading" id="ySV-ju-RrH"/>
+                            <constraint firstItem="GbI-Lw-a81" firstAttribute="trailing" secondItem="Ys6-oh-EgK" secondAttribute="trailing" constant="16" id="wfr-No-omZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GbI-Lw-a81"/>
                     </view>
@@ -231,13 +208,11 @@
                         <outlet property="studentNameTitle" destination="Ys6-oh-EgK" id="Beq-fe-iNc"/>
                         <outlet property="textViewForReference" destination="cnI-vX-MiZ" id="w40-uR-EGY"/>
                         <outlet property="textViewForStudentName" destination="bIf-CA-W3g" id="Hgi-SZ-XNO"/>
-                        <outlet property="textViewForUnitCode" destination="scs-aA-qgy" id="Mhs-dY-AsE"/>
-                        <outlet property="unitCodeTitle" destination="nej-jD-1WG" id="6Im-7d-mAr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B6w-PK-hMT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-255.19999999999999" y="-2203.4482758620693"/>
+            <point key="canvasLocation" x="-256.875" y="-2203.5211267605632"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="scI-jW-D6r">

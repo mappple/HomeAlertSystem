@@ -8,22 +8,16 @@
 
 import UIKit
 import Firebase
+import CoreData
 
 class SignUpViewController: UIViewController {
     
-    
-    
-    
-    
-
+    var managedObjectContext: NSManagedObjectContext?
     let ref = Database.database().reference()
     var newUserData: String?
     @IBOutlet weak var userEmailTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
-    
-    
     @IBOutlet weak var raspberryPiNameTextField: UITextField!
-    
     @IBAction func cancelButtonTapped(_ sender: Any) {
         
         self.dismiss(animated: true, completion: nil)
@@ -109,8 +103,7 @@ class SignUpViewController: UIViewController {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        cleanCoreData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -122,15 +115,17 @@ class SignUpViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    func cleanCoreData() {
+        // Create Fetch Request
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ImageMetaData")
+        // Create Batch Delete Request
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try managedObjectContext?.execute(batchDeleteRequest)
+        } catch {
+            print("Clean Coredata failed")
+        }
+    }
 }
 

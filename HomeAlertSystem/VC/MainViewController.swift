@@ -23,13 +23,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let settingsLauncher = SettingsLauncher()
     
-    
     //To present a drop down setting menu when setting button is tapped
     @objc func handleMore(sender: UIBarButtonItem){
         settingsLauncher.mainViewController = self
         settingsLauncher.showSettings(sender: navigationItem.leftBarButtonItem!)
-        
-        
     }
     
     //To present AboutPageViewController
@@ -42,18 +39,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //To sign out the application when signOut button on the drop down setting menu is tapped
     func signOutForSettingLauncher(){
-        
         do {
             try Auth.auth().signOut()
         } catch{
-            
+            print(error)
         }
         let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
         let appDelegate = UIApplication.shared.delegate
         appDelegate?.window??.rootViewController = signInPage
-        
     }
-    
     
     @IBOutlet weak var pirLabel: UILabel!
     
@@ -87,7 +81,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                 }
             })
-            
         }
     }
     
@@ -101,16 +94,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     } else if data == 1 {
                         self.pirLabel.text = "Be Careful! PIR sensor detect an abnormal situation!"
                         self.pirLabel.textColor = UIColor.red
-                    }
-                    
-                    
+                }
             })
-            
         }
     }
-    
-    
-    
     
     /*
      Remove all observers when deinitializing
@@ -124,7 +111,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
      */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return acquaintanceDictionary.count - 1
-        
     }
     
     /*
@@ -143,9 +129,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return 1
     }
     
-    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
         if editingStyle == .delete && piName != "" {
             // Delete the row from the data source
             acquaintanceDictionary.removeValue(forKey: indexPath.row + 1)
@@ -172,41 +156,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if (uid != nil){
             ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? [String:Any]
-            //let pi = snapshot.value as? [String:Any]
                 self.piName = (value![self.uid!] as? String)!
                 self.observeNewAcquaintance(piName: self.piName)
                 self.observePIR(piName: self.piName)
-        })
-       
+            })
         }
-       // self.tabVC = self.tabBarController as? BaseTabBarController
-       // self.tabVC!.acDict = self.acquaintanceDictionary
-        
-        //Configure observer for the raspberryPiName if the raspberryPiName exists
-        
         self.acquaintanceTableView.reloadData()
         setUpSettingButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        //        let videoURL = URL(string: "http://172.20.10.9:8080/camera/livestream.m3u8")
-        //        let player = AVPlayer(url: videoURL!)
-        //        let playerViewController = AVPlayerViewController()
-        //        playerViewController.player = player
-        //        self.present(playerViewController, animated: true) {
-        //            playerViewController.player!.play()
-        //    }
-        
-        
-        
-        //setupPlayer()
-        //self.acquaintanceTableView.reloadData()
-        
     }
-    
-
-    
-
 }

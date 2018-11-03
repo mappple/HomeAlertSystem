@@ -15,6 +15,9 @@ class SignTextField: UITextField {
         self.configureUI()
     }
     
+    /*
+     Custom textfield layout
+     */
     private func configureUI() {
         self.layer.borderColor = UIColor.gray.cgColor
         self.layer.borderWidth = 0.5
