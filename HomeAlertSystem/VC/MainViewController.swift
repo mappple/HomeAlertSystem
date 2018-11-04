@@ -14,7 +14,9 @@ import FirebaseStorage
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
-    //Setting up the right bar button on the navigation bar to represent setting button
+    /*
+     Set up the right bar button on the navigation bar to represent setting button
+     */
     func setUpSettingButton(){
         let moreButton = UIBarButtonItem(image: UIImage(named: "setting"), style: .plain, target: self, action: #selector(handleMore(sender: )))
         navigationItem.leftBarButtonItem = moreButton
@@ -23,21 +25,26 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let settingsLauncher = SettingsLauncher()
     
-    //To present a drop down setting menu when setting button is tapped
+    /*
+     Present a drop down setting menu when setting button is tapped
+     */
     @objc func handleMore(sender: UIBarButtonItem){
         settingsLauncher.mainViewController = self
         settingsLauncher.showSettings(sender: navigationItem.leftBarButtonItem!)
     }
     
-    //To present AboutPageViewController
+    /*
+     Present AboutPageViewController
+     */
     func showControllerForSettingsLauncher(){
         
         let aboutPageViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AboutPageViewController") as! AboutPageViewController
         
         navigationController?.pushViewController(aboutPageViewController, animated: true)
     }
-    
-    //To sign out the application when signOut button on the drop down setting menu is tapped
+    /*
+     Sign out the application when signOut button on the drop down setting menu is tapped
+     */
     func signOutForSettingLauncher(){
         do {
             try Auth.auth().signOut()
@@ -66,12 +73,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let update = ["/\(self.piName)/led": 1]
         ref.updateChildValues(update)
     }
-    //To convert string value to integer value
+    /*
+     Convert string value to integer value
+     */
     func isStringAnInt(string: String) -> Bool {
         return Int(string) != nil
     }
     
-    //Configure the observer to listen to the acquaintance branch in firebase
+    /*
+     Configure the observer to listen to the acquaintance branch in firebase
+     */
     private func observeNewAcquaintance(piName: String){
         if piName != ""{
             acquaintanceRefHandle = ref.child("\(piName)/acquaintance").observe(.childAdded, with: {(snapshot) -> Void in
@@ -113,14 +124,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     /*
-     To set the number of table rows in each section
+     Set the number of table rows in each section
      */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return acquaintanceDictionary.count - 1
     }
     
     /*
-     To show acquaintance names in table cells
+     Show acquaintance names in table cells
      */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "acquaintanceCell", for: indexPath)
@@ -129,7 +140,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     /*
-     To set the number of sections in the table view
+     Set the number of sections in the table view
      */
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -145,12 +156,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                                     "/\(piName)/acquaintance/list/deleteNo": deleteNo] as [String : Any]
             ref.updateChildValues(updateACNameList)
             ref.child("\(piName)/acquaintance").child(String(indexPath.row + 1)).removeValue()
+            tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.reloadData()
         }
     }
     
     /*
-     Setting the background image, registering the table cell, setting delegates, executing all observers to fetch all necessary data in firebase, and starting up the setting button
+     Set the background image, register the table cell, set delegates, execute all observers to fetch all necessary data in firebase, and start up the setting button
      */
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -168,9 +180,5 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             })
         }
         setUpSettingButton()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
     }
 }

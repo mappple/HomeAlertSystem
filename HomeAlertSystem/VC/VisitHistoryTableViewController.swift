@@ -48,7 +48,6 @@ class VisitHistoryTableViewController: UITableViewController {
                 }
                 self.sections[day] = self.sections[day]!.sorted(by: { $0.time > $1.time })
                 self.sortedSections = self.sections.keys.sorted(by: >)
-
                 self.tableView.reloadData()
             } else {
                 print("Error for data reference observer")
@@ -153,6 +152,18 @@ class VisitHistoryTableViewController: UITableViewController {
             UIGraphicsEndImageContext();
         }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete && piName != "" {
+            let visitSection = sections[sortedSections[indexPath.section]]
+            let visitor = visitSection![indexPath.row]
+            let date = String(Int(visitor.time.timeIntervalSince1970 * 1000))
+            ref.child("\(piName)/data").child(date).removeValue()
+            sections[sortedSections[indexPath.section]]?.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.reloadData()
+        }
     }
 }
 
