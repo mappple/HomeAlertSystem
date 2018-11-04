@@ -51,7 +51,7 @@ class AddGalleryViewController: UIViewController, UICollectionViewDelegateFlowLa
      */
     @IBAction func submitDataAction(_ sender: Any) {
      
-        guard imageList.count > 1 else {
+        guard imageList.count > 4 else {
             displayMessage("Pleaase take at least six photo to ensure accuracy!", "Error")
             return
         }
